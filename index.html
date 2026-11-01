@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JAWOO 慈雨 — Know Your Rights in Korea</title>
+<meta name="description" content="JAWOO is an educational legal-information guide for international students in Korea.">
+<style>
+:root{
+  --bg:#F8F6F0; --surface:#FFFFFF; --text:#30343A; --text2:#737780;
+  --blue:#496A96; --red:#B65D52; --line:#E5E2DB;
+  --hover:rgba(48,52,58,.05); --blue-soft:rgba(73,106,150,.10); --red-soft:rgba(182,93,82,.10);
+  --focus:#496A96; --shadow:none;
+  --font:"Pragmatica","Pretendard","Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;
+}
+:root[data-theme="dark"]{
+  --bg:#191919; --surface:#222222; --text:#EAEAEA; --text2:#A0A0A0;
+  --blue:#7894B8; --red:#C47A70; --line:#373737;
+  --hover:rgba(255,255,255,.06); --blue-soft:rgba(120,148,184,.16); --red-soft:rgba(196,122,112,.16);
+  --focus:#7894B8;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:15.5px;line-height:1.6;-webkit-font-size-adjust:100%}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:3px}
+ul,ol{margin:0;padding:0}
+h1,h2,h3{line-height:1.3;margin:0;font-weight:600;letter-spacing:-.01em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--surface);padding:8px 12px;border:1px solid var(--line);z-index:100}
+.skip:focus{left:8px}
+svg.i{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* header */
+.hd{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
+.hd1{display:flex;align-items:center;gap:6px;height:54px;padding:0 18px;max-width:1440px;margin:0 auto}
+.logo{display:flex;align-items:baseline;gap:8px;color:var(--text);font-weight:700;letter-spacing:.14em;font-size:16px;margin-right:8px}
+.logo:hover{text-decoration:none}
+.logo small{font-weight:500;letter-spacing:.05em;color:var(--red);font-size:14px}
+.sp{flex:1}
+.ib{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:34px;min-width:34px;padding:0 9px;border-radius:6px;color:var(--text2)}
+.ib:hover{background:var(--hover);color:var(--text);text-decoration:none}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{padding:5px 10px;font-size:13px;color:var(--text2);min-height:32px}
+.seg button[aria-pressed="true"]{background:var(--blue-soft);color:var(--blue);font-weight:600}
+.hd2{display:flex;gap:2px;max-width:1440px;margin:0 auto;padding:0 14px;overflow-x:auto;scrollbar-width:none;border-top:1px solid transparent}
+.hd2::-webkit-scrollbar{display:none}
+.hd2 a{white-space:nowrap;color:var(--text2);font-size:13.5px;padding:9px 11px;border-bottom:2px solid transparent}
+.hd2 a:hover{color:var(--text);text-decoration:none}
+.hd2 a[aria-current="page"]{color:var(--blue);border-bottom-color:var(--blue);font-weight:600}
+.hd2 b{font-weight:600;color:var(--text2);margin-right:5px;font-variant-numeric:tabular-nums}
+.is-home .hd2{display:none}
+.is-home .hd{border-bottom-color:transparent;background:transparent;position:static}
+.is-home #menuBtn,.is-home #searchBtn{display:none}
+
+/* shell */
+.shell{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:276px minmax(0,1fr) 230px;gap:0;align-items:start}
+.sb-collapsed .shell{grid-template-columns:0 minmax(0,1fr) 230px}
+.is-home .shell{display:block}
+.sb{position:sticky;top:96px;height:calc(100vh - 96px);overflow-y:auto;padding:14px 10px 40px 14px;font-size:14px;transition:opacity .15s}
+.sb-collapsed .sb{opacity:0;pointer-events:none;overflow:hidden;padding:0}
+.is-home .sb,.is-home .tocwrap{display:none}
+.sb a.t{display:block;padding:4px 8px 4px 30px;border-radius:5px;color:var(--text2);line-height:1.4;margin:1px 0}
+.sb a.t:hover,.sb .chb:hover{background:var(--hover);color:var(--text);text-decoration:none}
+.sb a.t[aria-current="page"]{background:var(--blue-soft);color:var(--blue);font-weight:600}
+.sb .chb{display:flex;gap:6px;align-items:center;width:100%;text-align:left;padding:6px 8px;border-radius:5px;font-weight:600;font-size:13px;letter-spacing:.02em}
+.sb .chb .n{color:var(--text2);font-variant-numeric:tabular-nums;font-weight:500}
+.sb .chb.act{color:var(--blue)}
+.sb .chb svg{transition:transform .15s;width:14px;height:14px}
+.sb .chb[aria-expanded="true"] svg{transform:rotate(90deg)}
+.sb ul{list-style:none}
+.sb ul[hidden]{display:none}
+.sb .lbl{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--text2);margin:20px 8px 4px}
+.sb a.top{display:block;padding:6px 8px;border-radius:5px;color:var(--text);font-weight:600;font-size:13px}
+.sb a.top:hover{background:var(--hover);text-decoration:none}
+.sb a.top[aria-current="page"]{background:var(--blue-soft);color:var(--blue)}
+.scrim{display:none}
+
+main{min-width:0;padding:22px 26px 60px}
+.is-home main{padding:0}
+article.pg{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:34px 46px 40px;max-width:860px;margin:0 auto}
+.crumb{font-size:13px;color:var(--text2);margin-bottom:18px;display:flex;flex-wrap:wrap;gap:4px 6px}
+.crumb a{color:var(--text2)}
+.crumb a:hover{color:var(--blue)}
+.crumb span[aria-hidden]{opacity:.5}
+.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:6px}
+h1.ttl{font-size:28px;margin-bottom:6px}
+.subt{color:var(--text2);font-size:16.5px;margin:0 0 14px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 4px}
+.tag{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:1px 8px;color:var(--text2);white-space:nowrap}
+.tag.blue{color:var(--blue);border-color:var(--blue)}
+.tag.red{color:var(--red);border-color:var(--red)}
+.meta{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13px;color:var(--text2);padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:16px 0 8px}
+.meta b{font-weight:600;color:var(--text)}
+.notice{border-left:3px solid var(--red);background:var(--red-soft);padding:10px 14px;font-size:14px;margin:14px 0;border-radius:0 4px 4px 0}
+.notice.blue{border-left-color:var(--blue);background:var(--blue-soft)}
+.notice b{font-weight:600}
+article h2{font-size:19px;margin:36px 0 10px;padding-top:22px;border-top:1px solid var(--line)}
+article h2:first-of-type{margin-top:22px}
+article h3{font-size:15.5px;margin:20px 0 6px}
+article p{margin:0 0 12px;max-width:68ch}
+article ul.b,article ol.b{padding-left:22px;margin:0 0 12px;max-width:68ch}
+article ul.b li,article ol.b li{margin:5px 0;padding-left:2px}
+article li::marker{color:var(--text2)}
+.law{border-top:1px solid var(--line);padding:10px 0}
+.law:last-child{border-bottom:1px solid var(--line)}
+.law .nm{font-weight:600}
+.law .ar{color:var(--text2);font-size:14px}
+.law .ar b{color:var(--blue);font-weight:600}
+.scn{border-left:3px solid var(--blue);padding:2px 0 2px 16px;margin:10px 0}
+.scn .lab{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);font-weight:600}
+.flag{font-size:13.5px;color:var(--text2)}
+.flag li::marker{color:var(--red)}
+.row{display:flex;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line)}
+.row:last-child{border-bottom:1px solid var(--line)}
+.row .a{flex:1;min-width:0}
+.row .nm{font-weight:600;color:var(--text)}
+.row .ds{color:var(--text2);font-size:14px}
+.row .tel{font-variant-numeric:tabular-nums;font-weight:600;color:var(--blue);white-space:nowrap}
+.row .r{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-size:13.5px}
+.ext::after{content:" ↗";font-size:.85em}
+.foot-actions{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:14px}
+.link{color:var(--blue);cursor:pointer}
+.link:hover{text-decoration:underline;text-underline-offset:3px}
+.dis{font-size:13px;color:var(--text2);margin-top:18px}
+
+/* toc */
+.tocwrap{position:sticky;top:96px;padding:22px 14px 0 4px;font-size:13px;max-height:calc(100vh - 96px);overflow:auto}
+.tocwrap h4{margin:0 0 8px;font-size:11.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--text2);font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.tocwrap ul{list-style:none;border-left:1px solid var(--line)}
+.tocwrap a{display:block;padding:3px 0 3px 12px;margin-left:-1px;border-left:2px solid transparent;color:var(--text2);line-height:1.4}
+.tocwrap a:hover{color:var(--text);text-decoration:none}
+.tocwrap a.on{color:var(--blue);border-left-color:var(--blue);font-weight:600}
+.tocwrap.shut ul{display:none}
+.tocm{display:none;margin:0 0 16px;border:1px solid var(--line);border-radius:6px;font-size:14px}
+.tocm summary{padding:9px 12px;cursor:pointer;color:var(--text2)}
+.tocm a{display:block;padding:6px 14px;color:var(--text)}
+
+/* home */
+.home{min-height:calc(100vh - 54px);display:flex;flex-direction:column;align-items:center;padding:0 20px}
+.home .mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:720px;padding:28px 0 36px}
+.brand{text-align:center;margin-bottom:30px}
+.brand .wm{font-size:40px;font-weight:700;letter-spacing:.22em;padding-left:.22em}
+.brand .sym{font-size:22px;color:var(--red);letter-spacing:.2em;margin-top:2px}
+.home h1{font-size:30px;text-align:center;margin-bottom:6px;font-weight:600}
+.home .sub{color:var(--text2);text-align:center;margin:0 0 28px;font-size:16.5px}
+.sbox{position:relative;width:100%}
+.sbox .ic{position:absolute;left:18px;top:17px;color:var(--text2)}
+.sbox input{width:100%;height:56px;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:10px;padding:0 18px 0 48px;font:inherit;font-size:17px}
+.sbox input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+.sug{position:absolute;left:0;right:0;top:62px;background:var(--surface);border:1px solid var(--line);border-radius:8px;z-index:20;overflow:hidden;text-align:left;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.sug[hidden]{display:none}
+.sug a{display:flex;gap:10px;align-items:baseline;padding:9px 16px;color:var(--text);font-size:15px}
+.sug a small{color:var(--text2);font-size:12px;margin-left:auto;white-space:nowrap}
+.sug a:hover,.sug a.sel{background:var(--hover);text-decoration:none}
+.sug .ty{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--red);min-width:62px}
+.ex{display:flex;flex-wrap:wrap;gap:6px 8px;justify-content:center;margin:14px 0 0;font-size:13.5px;color:var(--text2)}
+.ex a{color:var(--text2);border:1px solid var(--line);border-radius:999px;padding:2px 12px;background:var(--surface)}
+.ex a:hover{color:var(--blue);border-color:var(--blue);text-decoration:none}
+.chs{display:grid;grid-template-columns:repeat(5,1fr);width:100%;margin-top:52px;border-top:1px solid var(--line)}
+.chs a{display:block;padding:16px 14px 14px 0;color:var(--text);border-right:1px solid var(--line);padding-left:14px}
+.chs a:first-child{padding-left:0}
+.chs a:last-child{border-right:0}
+.chs a:hover{text-decoration:none}
+.chs a:hover .ct{color:var(--blue)}
+.chs .cn{font-size:12px;color:var(--red);font-weight:600;letter-spacing:.08em}
+.chs .ct{font-weight:600;font-size:14.5px;letter-spacing:.03em}
+.chs .cs{font-size:13px;color:var(--text2);line-height:1.4;margin-top:2px}
+.reflinks{display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:center;margin-top:30px;font-size:14px}
+.reflinks .lb{color:var(--text2)}
+.hfoot{width:100%;max-width:880px;text-align:center;font-size:12.5px;color:var(--text2);border-top:1px solid var(--line);padding:16px 0 26px}
+
+/* lists */
+.toplist{list-style:none;margin:6px 0 0}
+.toplist li{display:flex;gap:14px;align-items:baseline;padding:9px 0;border-top:1px solid var(--line)}
+.toplist li:last-child{border-bottom:1px solid var(--line)}
+.toplist .no{color:var(--text2);font-variant-numeric:tabular-nums;width:22px;font-size:13.5px}
+.toplist a{flex:1;color:var(--text);font-weight:500}
+.toplist a:hover{color:var(--blue)}
+.toplist .st{font-size:12px;color:var(--text2)}
+.toplist .st.ok{color:var(--blue)}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:0 36px}
+.res-g{margin:22px 0 0}
+.res-g h3{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--red);margin:0 0 4px}
+.res{display:block;padding:10px 0;border-top:1px solid var(--line);color:var(--text)}
+.res:hover{text-decoration:none}
+.res:hover .rt{color:var(--blue)}
+.res .rt{font-weight:600}
+.res .rp{font-size:13px;color:var(--text2)}
+.res .rd{font-size:14px;color:var(--text2)}
+.inp{width:100%;height:42px;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:6px;padding:0 12px;font:inherit}
+.inp:focus{outline:none;border-color:var(--blue)}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.chip{border:1px solid var(--line);border-radius:999px;padding:2px 12px;font-size:13px;color:var(--text2);min-height:30px}
+.chip[aria-pressed="true"]{background:var(--blue-soft);color:var(--blue);border-color:var(--blue)}
+.az{display:flex;flex-wrap:wrap;gap:2px;margin:6px 0}
+.az button{min-width:28px;height:28px;border-radius:4px;font-size:13px;color:var(--text2)}
+.az button:hover{background:var(--hover)}
+.az button[aria-pressed="true"]{background:var(--blue-soft);color:var(--blue);font-weight:600}
+.gl{padding:12px 0;border-top:1px solid var(--line)}
+.gl .term{font-weight:600}
+.gl .kr{color:var(--red);margin-left:8px;font-weight:500}
+.gl p{margin:4px 0 4px;color:var(--text);font-size:14.5px}
+.cl{margin:0 0 30px}
+.cl h3{font-size:17px;margin-bottom:2px}
+.prog{height:3px;background:var(--line);border-radius:2px;margin:8px 0 10px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--blue);width:0;transition:width .2s}
+.ck{display:flex;gap:10px;padding:7px 0;border-top:1px solid var(--line);align-items:flex-start}
+.ck input{margin-top:5px;width:16px;height:16px;accent-color:var(--blue);flex:none}
+.ck label{cursor:pointer}
+.ck input:checked+label{color:var(--text2);text-decoration:line-through}
+.empty{padding:36px 0;color:var(--text2);text-align:center}
+.foot{max-width:860px;margin:22px auto 0;font-size:12.5px;color:var(--text2);padding:0 6px}
+
+@media (max-width:1180px){
+  .shell,.sb-collapsed .shell{grid-template-columns:276px minmax(0,1fr)}
+  .sb-collapsed .shell{grid-template-columns:0 minmax(0,1fr)}
+  .tocwrap{display:none}
+  .tocm{display:block}
+}
+@media (max-width:860px){
+  .shell,.sb-collapsed .shell{display:block}
+  .sb,.sb-collapsed .sb{position:fixed;left:0;top:0;height:100vh;width:min(320px,86vw);background:var(--bg);z-index:50;transform:translateX(-102%);transition:transform .2s;opacity:1;pointer-events:auto;padding:14px 10px 40px 14px;border-right:1px solid var(--line);overflow-y:auto}
+  .sb-open .sb{transform:none}
+  .sb-open .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:40}
+  main{padding:14px 12px 50px}
+  article.pg{padding:22px 18px 28px;border-radius:6px}
+  h1.ttl{font-size:24px}
+  .hd1{padding:0 10px;gap:2px}
+  .logo small{display:none}
+  .chs{grid-template-columns:1fr;margin-top:36px}
+  .chs a,.chs a:first-child{padding:12px 0;border-right:0;border-bottom:1px solid var(--line)}
+  .brand .wm{font-size:34px}
+  .home h1{font-size:25px}
+  .cols2{grid-template-columns:1fr}
+  .row{flex-wrap:wrap}
+  .row .r{align-items:flex-start;flex-direction:row;gap:12px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" id="skipLink">Skip to content</a>
+<div id="root">
+<header class="hd" id="hd"></header>
+<div class="shell">
+  <aside class="sb" id="sb"></aside>
+  <main id="main" tabindex="-1"></main>
+  <aside class="tocwrap" id="toc"></aside>
+</div>
+<div class="scrim" id="scrim"></div>
+</div>
+<noscript><p style="padding:24px">JAWOO requires JavaScript to display its content.</p></noscript>
+
+<script>
+"use strict";
+/* ============================================================
+   JAWOO 慈雨 — single-file build
+   Content status: ALL legal topics are "Under Review".
+   Nothing here is legal advice; every citation must be checked
+   against the Korean National Law Information Center before use.
+   ============================================================ */
+const L=(en,ko)=>({en,ko});
+const DRAFT_DATE="2026-10-31";
+const CONTACT_EMAIL=""; /* DEPENDENCY: set a real corrections mailbox before publication */
+
+/* ---------- UI strings ---------- */
+const UI={
+ en:{home:"Home",search:"Search",searchPh:"Search rights, rules and what to do…",chapters:"Chapters",ref:"Reference Center",
+  h1:"Know Your Rights in Korea.",sub:"A Practical Legal Guide for International Students.",
+  tryEx:"Try:",menu:"Menu",theme:"Toggle light/dark theme",onPage:"On this page",
+  disc:"JAWOO provides educational legal information. It does not replace individualized legal advice.",
+  footHome:"JAWOO · Educational information only · Content is under review and not yet verified by a legal professional.",
+  glossary:"Legal Glossary",checklists:"Practical Checklists",sources:"Official Sources",directory:"Support Directory",
+  overview:"Overview",applies:"Who Does This Apply To?",law:"Relevant Law",understand:"Understand It",scenario:"Real-life Scenario",
+  actions:"What You Can Do",exceptions:"Exceptions & Limitations",help:"Where to Get Help",official:"Official Sources",verify:"Needs verification before publication",
+  scnLabel:"Illustrative example — not an actual case",status:"Status",trans:"Translation",lastRev:"Last reviewed",notRev:"Not yet reviewed by a legal professional",drafted:"Drafted",
+  related:"Related topics",report:"Report a correction",reportNote:"Corrections channel not configured yet. A mailbox or form must be connected by the site owner before publication.",
+  stUR:"Under Review",stPlan:"Planned",trAI:"Korean draft — not professionally verified",trNone:"Korean not yet written",
+  planned:"This topic is planned but has not been written or verified yet. JAWOO does not fill unverified topics with generic legal text.",
+  meta:"Topic metadata",applicable:"Applicable student groups",
+  topics:"Topics",introduction:"Introduction",relChecklists:"Related checklists",relGlossary:"Related glossary terms",relAgencies:"Official support agencies",
+  noResults:"No exact match.",tryInstead:"Related places to start",results:"Results",resultsFor:"Results for",
+  typeTopic:"Topics",typeGlossary:"Legal Glossary",typeChecklist:"Checklists",typeSource:"Official Sources",typeDir:"Support Directory",typeChapter:"Chapters",
+  searchNote:"Search uses keyword and synonym matching in English and Korean. It is not semantic search and may miss phrasings.",
+  filter:"Filter",all:"All",az:"A–Z",findTerm:"Search terms…",findOrg:"Search organizations…",reset:"Reset",done:"done",
+  statutes:"Statutes & regulations",agencies:"Government agencies & guidance",english:"English translations of laws",
+  phone:"Phone",website:"Website",langSupport:"Language support",unverified:"not verified",issues:"Issue categories",
+  notFound:"Page not found",notFoundTxt:"The page you requested does not exist.",goHome:"Back to home",
+  openTopic:"Open topic",allCats:"All",viewAll:"All chapters",
+  docs:"Applicable groups",glossSee:"See topic",
+  kw:"Keywords",tid:"Topic ID",
+  planBanner:"Planned topic",
+  ctaCorr:"Spot an error? Report a correction",
+  toggleSb:"Show or hide sidebar",
+  noMatch:"Nothing matches your filters."},
+ ko:{home:"홈",search:"검색",searchPh:"권리, 규정, 대처 방법을 검색하세요…",chapters:"챕터",ref:"자료실",
+  h1:"한국에서의 내 권리 알기",sub:"유학생을 위한 실용 법률 안내서",
+  tryEx:"예시:",menu:"메뉴",theme:"라이트/다크 테마 전환",onPage:"이 페이지의 목차",
+  disc:"JAWOO는 교육 목적의 법률 정보를 제공합니다. 개별 사안에 대한 법률 자문을 대체하지 않습니다.",
+  footHome:"JAWOO · 교육용 정보 · 모든 내용은 검토 중이며 법률 전문가의 검증을 거치지 않았습니다.",
+  glossary:"법률 용어집",checklists:"실천 체크리스트",sources:"공식 출처",directory:"지원 기관 안내",
+  overview:"개요",applies:"누구에게 적용되나요?",law:"관련 법령",understand:"이해하기",scenario:"상황 예시",
+  actions:"할 수 있는 일",exceptions:"예외와 한계",help:"도움받을 곳",official:"공식 출처",verify:"게시 전 확인이 필요한 사항",
+  scnLabel:"가상의 예시 — 실제 사건이 아닙니다",status:"상태",trans:"번역",lastRev:"최종 검토일",notRev:"법률 전문가의 검토 전",drafted:"초안 작성",
+  related:"관련 주제",report:"오류 제보",reportNote:"제보 창구가 아직 연결되지 않았습니다. 게시 전에 운영자가 메일 주소나 양식을 연결해야 합니다.",
+  stUR:"검토 중",stPlan:"작성 예정",trAI:"한국어 초안 — 전문 감수 전",trNone:"한국어 미작성",
+  planned:"이 주제는 아직 작성·검증되지 않았습니다. JAWOO는 검증되지 않은 주제를 일반적인 법률 문구로 채우지 않습니다.",
+  meta:"주제 메타데이터",applicable:"적용 대상 학생",
+  topics:"주제",introduction:"소개",relChecklists:"관련 체크리스트",relGlossary:"관련 용어",relAgencies:"관련 공공 지원 기관",
+  noResults:"정확히 일치하는 결과가 없습니다.",tryInstead:"이런 곳에서 시작해 보세요",results:"검색 결과",resultsFor:"검색어",
+  typeTopic:"주제",typeGlossary:"법률 용어집",typeChecklist:"체크리스트",typeSource:"공식 출처",typeDir:"지원 기관",typeChapter:"챕터",
+  searchNote:"검색은 영어·한국어 키워드와 유의어 매칭 방식입니다. 의미 기반 검색이 아니므로 일부 표현은 찾지 못할 수 있습니다.",
+  filter:"필터",all:"전체",az:"가나다·A–Z",findTerm:"용어 검색…",findOrg:"기관 검색…",reset:"초기화",done:"완료",
+  statutes:"법령",agencies:"정부 기관 및 안내",english:"법령 영문 번역",
+  phone:"전화",website:"웹사이트",langSupport:"언어 지원",unverified:"확인되지 않음",issues:"문제 분야",
+  notFound:"페이지를 찾을 수 없습니다",notFoundTxt:"요청하신 페이지가 없습니다.",goHome:"홈으로",
+  openTopic:"주제 열기",allCats:"전체",viewAll:"전체 챕터",
+  docs:"적용 대상",glossSee:"주제 보기",
+  kw:"키워드",tid:"주제 ID",
+  planBanner:"작성 예정 주제",
+  ctaCorr:"오류를 발견하셨나요? 제보하기",
+  toggleSb:"사이드바 열기/닫기",
+  noMatch:"조건에 맞는 항목이 없습니다."}
+};
+
+/* ---------- Chapters & topics ---------- */
+const CH=[
+{id:"student",n:"01",en:"STUDENT LIFE",ko:"학교생활",sub:L("Being a Student in Korea","한국에서 학생으로 살아가기"),
+ intro:L("Your rights and responsibilities depend heavily on the kind of school you attend — a Korean domestic school, a foreign or international school, a university or a language program. This chapter will separate general legal principles from institution-specific rules.","학생으로서의 권리와 책임은 다니는 학교의 유형(국내 학교, 외국인학교·국제학교, 대학, 어학연수 과정)에 따라 크게 달라집니다. 이 챕터는 일반적인 법 원칙과 기관별 규정을 구분하여 안내할 예정입니다."),
+ topics:[["School Enrollment & Transfers","입학 및 전학"],["Student Rights & Responsibilities","학생의 권리와 책임"],["School Rules & Disciplinary Actions","학교 규칙과 징계"],["Bullying, Harassment & School Violence","따돌림·괴롭힘·학교폭력"],["Privacy & Personal Information","사생활과 개인정보"],["Attendance & Academic Records","출결과 학업 기록"],["Complaints & Dispute Resolution","민원과 분쟁 해결"]]},
+{id:"everyday",n:"02",en:"EVERYDAY LIFE",ko:"일상생활",sub:L("Understanding Your Rights in Daily Life","일상 속 권리 이해하기"),
+ intro:L("Shopping, subscriptions, online services, public offices and daily encounters all involve legal rights. This chapter explains the rules that most often matter to international students.","쇼핑, 구독, 온라인 서비스, 관공서 이용 등 일상의 많은 순간에 법적 권리가 걸려 있습니다. 이 챕터는 유학생에게 가장 자주 필요한 규정을 설명합니다."),
+ topics:[["Consumer Rights & Refunds","소비자 권리와 환불"],["Online Shopping & Digital Transactions","온라인 쇼핑과 전자거래"],["Fraud, Scams & Financial Safety","사기·스캠과 금융 안전"],["Personal Information & Online Privacy","개인정보와 온라인 프라이버시"],["Discrimination & Human Rights","차별과 인권"],["Public Services & Identification","공공서비스와 신분 확인"],["Transportation & Public Regulations","교통과 공공 규정"]]},
+{id:"home",n:"03",en:"HOME",ko:"주거",sub:L("Housing and Rental Contracts","주거와 임대차 계약"),
+ intro:L("Renting a home in Korea often involves a large deposit and contract terms that are unfamiliar to newcomers. This chapter explains how rental contracts work and how to protect your deposit.","한국에서 집을 구할 때는 큰 금액의 보증금과 낯선 계약 조건을 마주하게 됩니다. 이 챕터는 임대차 계약의 구조와 보증금을 지키는 방법을 설명합니다."),
+ topics:[["Finding Accommodation","숙소 구하기"],["Understanding Rental Contracts","임대차 계약 이해하기"],["Deposits, Rent & Additional Fees","보증금, 월세, 추가 비용"],["Housing Registration & Legal Protection","주택 등기와 법적 보호"],["Repairs, Maintenance & Responsibilities","수리·유지·관리 책임"],["Contract Termination & Moving Out","계약 해지와 이사"],["Rental Disputes & Deposit Recovery","임대차 분쟁과 보증금 반환"]]},
+{id:"work",n:"04",en:"WORK",ko:"근로",sub:L("Working in Korea","한국에서 일하기"),
+ intro:L("Whether and how much you may work depends on your status of stay. Once you work, Korean labor law protects you — including wages, working hours and written contracts. This chapter starts with eligibility and then covers your protections at work.","일할 수 있는지, 얼마나 일할 수 있는지는 체류자격에 따라 달라집니다. 일을 하게 되면 임금, 근로시간, 서면 계약 등 한국 노동법의 보호를 받습니다. 이 챕터는 취업 자격에서 시작해 근로자로서의 보호를 다룹니다."),
+ topics:[["Eligibility to Work","취업 자격"],["Employment Contracts","근로계약"],["Working Hours & Minimum Wage","근로시간과 최저임금"],["Wages, Payment & Unpaid Work","임금 지급과 체불"],["Workplace Rights & Responsibilities","직장에서의 권리와 책임"],["Workplace Harassment & Discrimination","직장 내 괴롭힘과 차별"],["Resignation & Employment Disputes","퇴사와 노동 분쟁"]]},
+{id:"help",n:"05",en:"HELP",ko:"도움",sub:L("Knowing What to Do When Something Goes Wrong","문제가 생겼을 때 해야 할 일"),
+ intro:L("When something goes wrong, knowing who to contact and how to prepare makes a large difference. This chapter explains reporting channels, legal assistance and how to get an interpreter.","문제가 생겼을 때 누구에게 어떻게 연락하고 무엇을 준비해야 하는지 알면 큰 도움이 됩니다. 이 챕터는 신고 경로, 법률 지원, 통역 요청 방법을 안내합니다."),
+ topics:[["How to Report a Problem","문제 신고 방법"],["Filing Complaints & Seeking Remedies","진정·고소와 구제 신청"],["Finding Legal Assistance","법률 지원 찾기"],["Emergency Contacts & Public Agencies","긴급 연락처와 공공기관"],["Understanding Legal Procedures","법적 절차 이해하기"],["Preparing Documents & Evidence","서류와 증거 준비"],["What to Do When You Need an Interpreter","통역이 필요할 때"]]}
+];
+const chById=id=>CH.find(c=>c.id===id);
+const tid=(ch,i)=>ch+"-"+(i+1);
+const parseTid=id=>{const [c,i]=id.split("-");const ch=chById(c);return ch&&ch.topics[i-1]?{ch,i:+i-1,tp:ch.topics[i-1]}:null};
+
+/* extra search keywords for planned topics (titles are always searchable) */
+const STUB_KW={
+ "home-1":["housing","dormitory","기숙사","goshiwon","고시원","one-room","원룸","real estate agent","공인중개사","숙소"],
+ "home-2":["lease","contract","임대차","계약서","jeonse","전세","wolse","월세"],
+ "home-3":["deposit","rent","관리비","maintenance fee","보증금","월세"],
+ "home-4":["registry","등기부등본","fixed date","확정일자","move-in report","전입신고"],
+ "home-5":["repair","수리","broken","고장","landlord"],
+ "home-6":["moving out","이사","terminate","해지","notice"],
+ "student-4":["bullying","school violence","학교폭력","따돌림","117"],
+ "student-5":["privacy","cctv","개인정보","student records"],
+ "help-1":["report","신고","complaint","police","경찰"],
+ "help-2":["rental dispute","임대차 분쟁","mediation","조정","petition","진정","remedy","구제"],
+ "help-3":["legal aid","법률구조","lawyer","변호사","132","free legal"],
+ "help-5":["procedure","절차","court","법원","lawsuit","소송"],
+ "help-6":["evidence","증거","documents","서류","screenshot","캡처"],
+ "help-7":["interpreter","통역","translation","번역","language"],
+ "everyday-3":["scam","fraud","사기","보이스피싱","phishing"],
+ "everyday-4":["privacy","personal information","개인정보","data"],
+ "everyday-5":["discrimination","차별","racism","human rights","인권"],
+ "work-5":["workplace","rights","직장","annual leave","연차","severance","퇴직금"],
+ "work-6":["harassment","괴롭힘","직장 내 괴롭힘","sexual harassment","성희롱"],
+ "work-7":["resign","quit","퇴사","dismissal","해고","fired"]
+};
+
+/* ---------- Topic content (all: Under Review) ---------- */
+const LAW_BASE="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/";
+const lawUrl=n=>LAW_BASE+encodeURIComponent(n.replace(/\s/g,""));
+const LAWS={
+ hlpa:{en:"Housing Lease Protection Act",ko:"주택임대차보호법"},
+ lsa:{en:"Labor Standards Act",ko:"근로기준법"},
+ mwa:{en:"Minimum Wage Act",ko:"최저임금법"},
+ ima:{en:"Immigration Act",ko:"출입국관리법"},
+ fpta:{en:"Act on the Protection, etc. of Fixed-term and Part-time Employees",ko:"기간제 및 단시간근로자 보호 등에 관한 법률"},
+ rbsa:{en:"Employee Retirement Benefit Security Act",ko:"근로자퇴직급여 보장법"},
+ wcga:{en:"Wage Claim Guarantee Act",ko:"임금채권보장법"},
+ eca:{en:"Act on the Consumer Protection in Electronic Commerce, Etc.",ko:"전자상거래 등에서의 소비자보호에 관한 법률"},
+ fac:{en:"Framework Act on Consumers",ko:"소비자기본법"},
+ pipa:{en:"Personal Information Protection Act",ko:"개인정보 보호법"},
+ svpa:{en:"Act on the Prevention of and Countermeasures against Violence in Schools",ko:"학교폭력예방 및 대책에 관한 법률"},
+ esea:{en:"Elementary and Secondary Education Act",ko:"초·중등교육법"}
+};
+const lw=(k,arts,note)=>({k,arts,note});
+
+const CONTENT={
+"home-7":{
+ sub:L("What to do when a landlord does not return your rental deposit","집주인이 임대 보증금을 돌려주지 않을 때"),
+ labels:["Deposit","Rental dispute"],groups:L("Tenants in residential leases (all student groups who rent privately)","주택을 임차한 모든 학생(개인 임대차 계약 기준)"),
+ kw:["deposit","rental deposit","deposit recovery","landlord","return deposit","won't return","security deposit","보증금","돌려","반환","집주인","임대인","jeonse","전세","확정일자","임차권등기명령","lease registration order","내용증명","tenant","세입자","rental dispute","임대차"],
+ overview:L("In Korea, tenants commonly pay a large deposit (보증금) when moving in, and the landlord must return it when the lease ends and the tenant leaves. Disputes arise when the landlord delays or refuses. Korean law gives tenants specific tools to protect and recover the deposit, but several of them only work if you took certain steps early — often on move-in day.","한국에서는 입주할 때 비교적 큰 금액의 보증금을 임대인에게 맡기고, 계약이 끝나 집을 비울 때 돌려받습니다. 임대인이 반환을 미루거나 거부하면 분쟁이 생깁니다. 법은 보증금을 지키고 돌려받기 위한 수단을 마련해 두었지만, 상당수는 입주 때부터 미리 밟아 둔 절차가 있어야 효력이 있습니다."),
+ applies:L(["Tenants renting housing (a room, apartment, villa, or officetel used as a residence) under a lease contract.","The Act is about residential leases. University dormitories, school-arranged homestays and similar arrangements are usually governed by the institution's own rules — check your agreement."],["주택(원룸, 아파트, 빌라, 주거용 오피스텔 등)을 임대차 계약으로 빌린 임차인.","이 법은 주거용 건물의 임대차를 대상으로 합니다. 대학 기숙사나 학교가 주선한 홈스테이 등은 보통 해당 기관의 자체 규정이 적용되므로 계약 내용을 확인해야 합니다."]),
+ laws:[lw("hlpa",L("Art. 3 (opposability); Art. 3-2 (deposit claim and priority via fixed date); Art. 3-3 (lease registration order); Art. 4 (minimum term); Art. 6, 6-3 (renewal); Art. 8 (priority for small deposits); Art. 14 (mediation committee)","제3조(대항력), 제3조의2(보증금 회수·확정일자 우선변제), 제3조의3(임차권등기명령), 제4조(임대차기간), 제6조·제6조의3(계약갱신), 제8조(소액보증금 우선변제), 제14조(조정위원회)"),L("Article numbers must be re-checked against the current text.","조문 번호는 현행 법령 본문과 다시 대조해야 합니다."))],
+ understand:L(["Two steps at move-in do most of the protecting. First, move in and report your new address (전입신고): this gives the lease 'opposability' (대항력), meaning you can assert your right to stay and to the deposit even if the owner sells the home. Second, get a fixed-date stamp (확정일자) on the contract: this gives you a place in line to be repaid from the sale price if the home is sold at auction. These protections generally start from the day after the requirements are met (Art. 3, 3-2).","Do not leave first. If you move out or cancel your address report before the deposit is returned, you can lose opposability. If you must leave, apply to the court for a lease registration order (임차권등기명령, Art. 3-3) before moving; once registered, your protection continues after you move out.","Check the end date and renewal rules early. If neither side gives notice within the period set by Art. 6, the lease generally renews on the same terms, and a tenant may claim a renewal once under Art. 6-3. Keep all notices in writing."],["입주 때의 두 가지 절차가 보증금 보호의 대부분을 좌우합니다. 첫째, 이사한 뒤 전입신고를 하면 대항력이 생겨, 집주인이 바뀌어도 거주할 권리와 보증금을 주장할 수 있습니다. 둘째, 계약서에 확정일자를 받으면 집이 경매로 넘어갈 때 매각 대금에서 순위에 따라 보증금을 우선 변제받을 수 있습니다. 이러한 효력은 요건을 갖춘 다음 날부터 생기는 것이 원칙입니다(제3조, 제3조의2).","보증금을 돌려받기 전에 먼저 나가면 안 됩니다. 보증금을 받기 전에 이사하거나 전입신고를 말소하면 대항력을 잃을 수 있습니다. 부득이하게 이사해야 한다면 이사 전에 법원에 임차권등기명령(제3조의3)을 신청하세요. 등기가 되면 이사 후에도 보호가 유지됩니다.","계약 종료일과 갱신 규정을 미리 확인하세요. 제6조가 정한 기간 안에 어느 쪽도 통지하지 않으면 같은 조건으로 계약이 갱신되는 것이 원칙이고, 임차인은 제6조의3에 따라 갱신을 한 차례 요구할 수 있습니다. 통지는 반드시 서면으로 남기세요."]),
+ scenario:L("Lina, a university student, has a lease that is ending. She had reported her address and stamped the contract with a fixed date when she moved in. Two months before the end date she told the landlord in writing that she would leave. On the end date the landlord says he will pay 'after a new tenant comes'. Lina sends a certified-mail demand letter with content proof (내용증명) stating the amount, her bank account and a deadline. Because she needs to leave the country soon, she applies for a lease registration order before moving out, so her deposit protection continues afterwards.","대학생 리나는 임대차 계약 종료를 앞두고 있습니다. 입주할 때 전입신고를 했고 계약서에 확정일자도 받아 두었습니다. 종료 두 달 전 집주인에게 나가겠다고 서면으로 알렸습니다. 종료일에 집주인은 \"새 세입자가 들어오면 주겠다\"고 합니다. 리나는 금액, 계좌, 기한을 적은 내용증명을 보냅니다. 곧 출국해야 하므로 이사 전에 임차권등기명령을 신청해, 나간 뒤에도 보증금 보호가 유지되도록 합니다."),
+ actions:L(["Give written notice of your intention to end the lease within the notice period, and ask for the deposit back on the end date. Keep proof of delivery.","Send a formal demand by certified mail with content proof (내용증명): amount, bank account, deadline.","If the landlord still does not pay and you must move, apply to the court for a lease registration order before moving out.","Consider mediation through the Housing Lease Dispute Mediation Committee, which is usually faster and cheaper than a lawsuit.","If needed, use a court payment order (지급명령) or file a lawsuit, then compulsory enforcement. A legal-aid consultation can help you choose (Korea Legal Aid Corporation, 132).","If you bought deposit-return insurance, contact the guarantor early — claims can have deadlines."],["계약 종료 통지 기간 안에 종료 의사를 서면으로 알리고, 종료일에 보증금을 반환해 달라고 요청합니다. 발송 증거를 보관하세요.","금액, 계좌번호, 기한을 적어 내용증명으로 정식 반환 요구를 보냅니다.","그래도 지급되지 않고 이사해야 한다면, 이사하기 전에 법원에 임차권등기명령을 신청합니다.","주택임대차분쟁조정위원회의 조정을 고려해 보세요. 소송보다 대체로 빠르고 비용이 적게 듭니다.","필요하면 지급명령 신청이나 소송, 이후 강제집행 절차를 이용합니다. 대한법률구조공단(132) 상담이 선택에 도움이 됩니다.","보증금반환보증 등에 가입했다면 보증기관에 일찍 연락하세요. 청구 기한이 있을 수 있습니다."]),
+ exceptions:L(["If the home is sold, the new owner generally takes over the landlord's obligations only if your lease has opposability.","If mortgages or debts on the property are large compared with its value, you may not be fully repaid even with priority. Check the property register (등기부등본) before signing.","Dormitories, homestays arranged by a school, and commercial leases follow different rules.","Your status of stay and how your address is recorded may affect how the move-in report works for you."],["주택이 매매되면, 임차권에 대항력이 있는 경우에 한해 새 소유자가 임대인의 의무를 승계하는 것이 원칙입니다.","주택에 설정된 근저당·채무가 집 가치에 비해 크면 우선변제권이 있어도 전액을 돌려받지 못할 수 있습니다. 계약 전에 등기부등본을 확인하세요.","기숙사, 학교가 주선한 홈스테이, 상가 임대차는 규율이 다릅니다.","체류자격과 주소 신고 방식에 따라 전입신고의 효력이 달라질 수 있습니다."]),
+ flags:L(["Verify how a foreign national's address report or registration counts as the move-in report for Art. 3 purposes (Immigration Act and Hi Korea guidance).","Verify the notice windows and the renewal-right limits in Art. 6 and 6-3.","Verify whether foreign tenants are eligible for deposit-return guarantee products.","Verify the article number of the dispute mediation committee provisions.","Korean text has not been reviewed by a legal professional."],["외국인의 체류지(주소) 신고·등록이 제3조의 전입신고로 인정되는 방식을 확인할 것(출입국관리법 및 하이코리아 안내).","제6조·제6조의3의 통지 기간과 갱신요구권 제한을 확인할 것.","외국인 임차인이 보증금반환보증 상품에 가입할 수 있는지 확인할 것.","분쟁조정위원회 관련 조문 번호를 확인할 것.","한국어 본문은 법률 전문가의 감수를 거치지 않았습니다."]),
+ help:["klac","iros","molit","hikorea"],
+ sources:[{t:L("Housing Lease Protection Act (Korean text)","주택임대차보호법 (국문)"),u:lawUrl("주택임대차보호법")},{t:L("Internet Registry Office — property register","인터넷등기소 — 등기부등본"),u:"https://www.iros.go.kr"},{t:L("Korea Legal Aid Corporation","대한법률구조공단"),u:"https://www.klac.or.kr"}],
+ related:["home-2","home-4","home-6","help-2"],checklist:"c-deposit"},
+
+"work-1":{
+ sub:L("Who may work, and what permissions you need","누가 일할 수 있고, 어떤 허가가 필요한가"),
+ labels:["Visa status","Part-time work"],groups:L("Students on student statuses (e.g. D-2, D-4); exchange students. Other statuses differ.","학생 체류자격(예: D-2, D-4) 및 교환학생. 다른 체류자격은 규정이 다릅니다."),
+ kw:["work","working","job","part-time","part time","parttime","alba","아르바이트","알바","visa","체류자격","비자","work permit","permission to work","시간제취업","취업","취업허가","d-2","d-4","illegal work","불법취업","eligibility"],
+ overview:L("Whether you may work in Korea — and how much — depends mainly on your status of stay (체류자격, your visa category). Many student statuses do not allow work by default. Part-time work normally needs prior permission from immigration. Working without permission can lead to fines, an order to leave the country and trouble renewing your visa, for both the worker and the employer.","한국에서 일할 수 있는지, 얼마나 일할 수 있는지는 주로 체류자격(비자 종류)에 달려 있습니다. 많은 학생 체류자격은 기본적으로 취업을 허용하지 않으며, 아르바이트 등 시간제 취업은 대체로 출입국 당국의 사전 허가가 필요합니다. 허가 없이 일하면 근로자와 고용주 모두 벌금, 출국 명령, 체류 연장 불이익 등을 받을 수 있습니다."),
+ applies:L(["International students with a student status — for example D-2 (degree programs) or D-4 (language programs) — and exchange students.","Students at foreign or international schools and students under 18 face additional age-related labor rules (see Working Hours & Minimum Wage).","Do not assume one rule fits every status of stay. Check yours on your alien registration card and on Hi Korea."],["학생 체류자격(예: 학위과정 D-2, 어학연수 D-4)을 가진 유학생과 교환학생.","외국인학교·국제학교 학생과 만 18세 미만 학생에게는 연령에 따른 추가 근로 규정이 있습니다(근로시간과 최저임금 참조).","모든 체류자격에 같은 규정이 적용된다고 가정하지 마세요. 외국인등록증과 하이코리아에서 본인의 체류자격을 확인하세요."]),
+ laws:[lw("ima",L("Art. 18 (restrictions on employment of foreigners); Art. 20 (permission for activities outside one's status of stay)","제18조(외국인 고용의 제한), 제20조(체류자격 외 활동의 허가)"),L("Penalty provisions: article numbers to be added after verification.","벌칙 조항: 확인 후 조문 번호 보완 필요.")),lw("lsa",L("Art. 6 (equal treatment, including nationality)","제6조(균등한 처우: 국적 등에 따른 차별 금지)"),null)],
+ understand:L(["Think of your visa as a list of permitted activities. Studying is permitted. Employment is permitted only if your status allows it, or if you obtain permission for activities outside your status (Art. 20). For student statuses this is usually called part-time work permission (시간제취업 허가).","The permission usually specifies the kind of work and the weekly hours allowed. Limits can depend on your status, your program and sometimes your Korean-language level. The Ministry of Justice updates the criteria, so read the current guideline on Hi Korea instead of relying on summaries — including this one.","Labor protections apply to work you actually do: Art. 6 of the Labor Standards Act prohibits discrimination by nationality in working conditions. But bringing a claim may draw attention to a status problem, so seek advice before acting (Korea Legal Aid Corporation 132, Immigration Contact Center 1345)."],["비자는 '허용된 활동의 목록'이라고 생각하면 쉽습니다. 공부는 허용됩니다. 취업은 체류자격이 허용하거나, 체류자격 외 활동허가(제20조)를 받은 경우에만 가능합니다. 학생 체류자격에서는 보통 '시간제취업 허가'라고 부릅니다.","허가에는 보통 일의 종류와 주당 근로 가능 시간이 정해집니다. 한도는 체류자격, 학과·과정, 때로는 한국어 능력에 따라 달라질 수 있습니다. 기준은 법무부가 수시로 바꾸므로, 이 안내를 포함한 요약본에 의존하지 말고 하이코리아의 최신 안내를 확인하세요.","실제로 한 일에는 노동법상 보호가 적용됩니다. 근로기준법 제6조는 근로조건에서 국적을 이유로 한 차별을 금지합니다. 다만 권리를 주장하다 체류자격 문제가 드러날 수 있으므로, 행동하기 전에 먼저 상담을 받으세요(대한법률구조공단 132, 외국인종합안내센터 1345)."]),
+ actions:L(["Confirm your status of stay on your alien registration card and on Hi Korea.","Check whether your status allows part-time work and under what conditions.","Apply for permission before you start working, usually through your school's international office or the immigration office.","Keep the permission document and make sure the workplace and job type match what was permitted.","If you are unsure, ask the Immigration Contact Center (1345) or your school's international office before accepting a job."],["외국인등록증과 하이코리아에서 본인의 체류자격을 확인합니다.","본인의 체류자격에서 시간제 취업이 가능한지, 어떤 조건인지 확인합니다.","일을 시작하기 전에 허가를 신청합니다. 보통 학교 국제교류처나 출입국·외국인관서를 통합니다.","허가 문서를 보관하고, 근무처와 업무 종류가 허가 내용과 일치하는지 확인합니다.","확신이 없으면 일을 수락하기 전에 외국인종합안내센터(1345)나 학교 국제교류처에 문의하세요."]),
+ exceptions:L(["Some statuses (for example residence or family-based statuses) have different work rights.","Certain types of workplace are commonly restricted for student part-time permission.","Remote or online work for overseas clients may also count as work — confirm before assuming it does not."],["거주(F 계열)나 가족 기반 등 일부 체류자격은 취업 권리가 다릅니다.","학생의 시간제취업 허가에서는 일부 업종이 제한되는 것이 일반적입니다.","해외 고객을 위한 원격·온라인 업무도 취업 활동에 해당할 수 있으므로, 해당하지 않는다고 단정하지 말고 확인하세요."]),
+ flags:L(["Verify the current part-time permission criteria (hours by status, program and language level) on Hi Korea.","Verify the list of restricted job types.","Verify article numbers for penalty provisions and whether remote work is treated as employment.","Verify how claiming unpaid wages interacts with an unauthorized-work situation."],["하이코리아에서 현행 시간제취업 허가 기준(체류자격·과정·어학 수준별 시간)을 확인할 것.","제한 업종 목록을 확인할 것.","벌칙 조문 번호와 원격근무의 취업 해당 여부를 확인할 것.","무허가 취업 상황에서 임금 청구가 체류에 미치는 영향을 확인할 것."]),
+ help:["hikorea","klac","moel"],
+ sources:[{t:L("Immigration Act (Korean text)","출입국관리법 (국문)"),u:lawUrl("출입국관리법")},{t:L("Hi Korea — immigration services","하이코리아 — 출입국·체류 안내"),u:"https://www.hikorea.go.kr"},{t:L("Ministry of Employment and Labor","고용노동부"),u:"https://www.moel.go.kr"}],
+ related:["work-2","work-3","help-3"],checklist:"c-job"},
+
+"work-2":{
+ sub:L("What a written contract should say, and what to keep","서면 계약에 담겨야 할 내용과 보관할 것"),
+ labels:["Contract","Part-time"],groups:L("Workers, including part-time and fixed-term workers","아르바이트·계약직을 포함한 모든 근로자"),
+ kw:["contract","employment contract","근로계약","근로계약서","labor contract","sign","written contract","서면","wage statement","표준근로계약서","passport","여권","penalty","위약"],
+ overview:L("In Korea an employer must state your key working conditions in writing. A clear written contract is your best evidence if there is ever a dispute about pay, hours or duties.","한국에서는 사용자가 주요 근로조건을 서면으로 밝혀야 합니다. 서면 근로계약서는 임금·근로시간·업무를 둘러싼 분쟁이 생겼을 때 가장 중요한 증거가 됩니다."),
+ applies:L(["People who work for an employer in Korea, including part-time and fixed-term workers, subject to the work-eligibility rules in 'Eligibility to Work'.","Specific duties differ for workplaces with fewer than 5 employees; core wage and contract rules still matter."],["한국에서 사용자에게 고용되어 일하는 사람 전체(시간제·기간제 포함). 단, 취업 자격 규정을 충족해야 합니다.","상시 5인 미만 사업장은 일부 규정이 다르게 적용되지만, 임금·계약의 기본 규정은 여전히 중요합니다."]),
+ laws:[lw("lsa",L("Art. 17 (written statement of working conditions); Art. 20 (no pre-fixed penalty for breach of contract); Art. 6 (equal treatment)","제17조(근로조건의 명시), 제20조(위약 예정의 금지), 제6조(균등한 처우)"),null),lw("fpta",L("Art. 17 (written working conditions for fixed-term and part-time workers)","제17조(근로조건의 서면 명시)"),L("Verify wording and scope.","내용·적용 범위 확인 필요."))],
+ understand:L(["At minimum, the document should state: the wage (amount, how it is calculated and when/how it is paid), working hours and breaks, weekly holiday and paid leave, the workplace and duties, and the contract period. The employer must provide the document to you (Art. 17).","A verbal agreement can still be valid, but it is much harder to prove. If you only receive a verbal offer, ask for the terms in writing and keep chat messages as evidence.","Some terms are not allowed: Art. 20 prohibits contracts that fix a penalty or damages in advance for breach. Employers should also not hold your passport or alien registration card. If you are asked to hand them over, refuse and seek advice."],["서면에는 최소한 임금(금액, 산정 방법, 지급 시기·방법), 근로시간과 휴게, 주휴일과 유급휴가, 근무 장소와 업무, 계약 기간이 있어야 합니다. 사용자는 이 서면을 근로자에게 교부해야 합니다(제17조).","구두 합의도 효력이 있을 수 있지만 입증이 훨씬 어렵습니다. 구두로만 제안받았다면 조건을 서면으로 달라고 요청하고, 메신저 대화 내용을 증거로 보관하세요.","허용되지 않는 조건도 있습니다. 제20조는 근로계약 불이행에 대한 위약금이나 손해배상액을 미리 정하는 것을 금지합니다. 또한 사용자가 여권이나 외국인등록증을 맡아 두어서는 안 됩니다. 요구받으면 거절하고 상담을 받으세요."]),
+ actions:L(["Ask for the written contract before your first shift.","Read the key items: wage, hours, pay date, duties, workplace, period.","If you cannot read it well, ask for a translation or bring someone you trust. Do not sign a blank or unclear document.","Keep a copy or a clear photo, plus messages about your schedule and pay.","Ask whether a standard employment contract form in your language is available (the Ministry of Employment and Labor publishes standard forms)."],["첫 근무 전에 서면 근로계약서를 요청합니다.","임금, 근로시간, 임금 지급일, 업무, 근무지, 기간을 확인합니다.","내용을 충분히 읽기 어렵다면 번역을 요청하거나 믿을 수 있는 사람과 함께 확인하세요. 빈 서류나 불분명한 서류에는 서명하지 마세요.","계약서 사본이나 선명한 사진, 근무 일정과 임금에 관한 메시지를 보관합니다.","본인 언어의 표준근로계약서 양식이 있는지 문의하세요(고용노동부가 표준 양식을 게시합니다)."]),
+ exceptions:L(["Rules on written contracts do not make a verbal arrangement void — they help you prove it.","Some statutory benefits, such as extra pay for overtime, do not apply in workplaces with fewer than 5 employees."],["서면 계약 규정이 구두 약정을 무효로 만드는 것은 아닙니다. 입증을 돕는 장치입니다.","상시 5인 미만 사업장에서는 연장근로 가산수당 등 일부 법정 급여 규정이 적용되지 않습니다."]),
+ flags:L(["Verify the exact content list of Art. 17 and the scope of the fixed-term/part-time act.","Verify the legal basis and wording of the rule against holding a passport or ARC, and availability of multilingual standard contracts.","Korean text has not been reviewed by a legal professional."],["제17조의 명시 사항 목록과 기간제·단시간근로자법의 적용 범위를 확인할 것.","여권·외국인등록증 보관 금지의 법적 근거와 다국어 표준근로계약서 제공 여부를 확인할 것.","한국어 본문은 법률 전문가의 감수를 거치지 않았습니다."]),
+ help:["moel","klac","hikorea"],
+ sources:[{t:L("Labor Standards Act (Korean text)","근로기준법 (국문)"),u:lawUrl("근로기준법")},{t:L("Fixed-term and Part-time Employees Act (Korean text)","기간제 및 단시간근로자 보호 등에 관한 법률 (국문)"),u:lawUrl(LAWS.fpta.ko)},{t:L("Ministry of Employment and Labor","고용노동부"),u:"https://www.moel.go.kr"}],
+ related:["work-1","work-3","work-4"],checklist:"c-job"},
+
+"work-3":{
+ sub:L("Standard hours, breaks, premium pay and the minimum wage","기준 근로시간, 휴게, 가산수당, 최저임금"),
+ labels:["Hours","Minimum wage"],groups:L("Workers incl. part-time; extra rules for under-18s","시간제 포함 근로자; 만 18세 미만은 추가 규정"),
+ kw:["working hours","hours","overtime","연장근로","야간","night","minimum wage","최저임금","시급","hourly wage","break","휴게","휴일","weekly holiday","주휴수당","premium","가산","under 18","minor","미성년","연소근로자","high school","고등학생"],
+ overview:L("Korean law sets standard working hours, required breaks, extra pay for overtime, night and holiday work, and an annual minimum hourly wage. Part-time and student workers are generally covered, with differences by workplace size and by age.","한국 법은 기준 근로시간, 휴게시간, 연장·야간·휴일 근로에 대한 가산 임금, 그리고 매년 정해지는 최저 시급을 규정합니다. 아르바이트와 학생 근로자도 원칙적으로 적용 대상이며, 사업장 규모와 나이에 따라 차이가 있습니다."),
+ applies:L(["Workers in Korea, including part-time workers, subject to work-eligibility rules.","Workplaces with 5 or more employees are covered by most provisions; smaller workplaces are covered by only some (Art. 11).","Workers aged 15–17 have additional protections, and a minimum working age applies (Art. 64, 69, 70)."],["한국에서 일하는 근로자(시간제 포함). 취업 자격 규정을 충족해야 합니다.","상시 5인 이상 사업장은 대부분의 규정이 적용되고, 5인 미만 사업장은 일부만 적용됩니다(제11조).","만 15세~17세 근로자에게는 최저 연령 규정과 추가 보호 규정이 있습니다(제64조, 제69조, 제70조)."]),
+ laws:[lw("lsa",L("Art. 11 (scope); Art. 50 (standard hours); Art. 53 (limits on extended hours); Art. 54 (breaks); Art. 55 (weekly holiday); Art. 56 (extra pay); Art. 64, 69, 70 (young workers)","제11조(적용 범위), 제50조(근로시간), 제53조(연장 근로 한도), 제54조(휴게), 제55조(휴일), 제56조(연장·야간·휴일 근로 가산), 제64조·제69조·제70조(연소근로자)"),L("Numeric limits must be re-checked against current text.","수치 한도는 현행 조문으로 재확인 필요.")),lw("mwa",L("Art. 6 (payment of the minimum wage; contract terms below it are void to that extent)","제6조(최저임금의 효력: 미달하는 약정은 그 부분 무효)"),null)],
+ understand:L(["Standard hours are 8 hours a day and 40 hours a week, not counting breaks (Art. 50). Employers must give at least 30 minutes of break for each 4 hours worked and at least 1 hour for 8 hours (Art. 54). Extended hours need agreement and have weekly limits (Art. 53).","For overtime, night work (22:00–06:00) and holiday work, the employer must add a premium of at least 50% of the ordinary wage (Art. 56), but this premium generally does not apply in workplaces with fewer than 5 employees.","The minimum hourly wage is set every year. Check the current figure on the Minimum Wage Commission website instead of relying on a number printed elsewhere. If your contract says less, the contract is void to the extent below the minimum, and you can claim the difference. Workers who work at least about 15 hours a week may also be entitled to a paid weekly-holiday allowance (주휴수당, Art. 55) — verify the conditions.","Young workers: there is a minimum working age, and workers under 18 have shorter maximum hours and restrictions on night and holiday work (Art. 64, 69, 70). Exact limits need verification."],["기준 근로시간은 휴게시간을 제외하고 하루 8시간, 주 40시간입니다(제50조). 사용자는 4시간 근로마다 30분 이상, 8시간 근로에는 1시간 이상의 휴게시간을 주어야 합니다(제54조). 연장 근로는 합의가 필요하고 주당 한도가 있습니다(제53조).","연장·야간(오후 10시~오전 6시)·휴일 근로에는 통상임금의 50% 이상을 가산하여 지급해야 합니다(제56조). 다만 상시 5인 미만 사업장에서는 이 가산 규정이 일반적으로 적용되지 않습니다.","최저 시급은 매년 정해집니다. 다른 곳에 적힌 금액에 의존하지 말고 최저임금위원회 웹사이트에서 현재 금액을 확인하세요. 계약상 임금이 최저임금보다 낮으면 그 부분은 무효이고 차액을 청구할 수 있습니다. 주당 약 15시간 이상 일하는 근로자는 유급 주휴수당(제55조)을 받을 수 있으므로 요건을 확인하세요.","연소근로자: 최저 연령 규정이 있고, 만 18세 미만 근로자는 최대 근로시간이 더 짧으며 야간·휴일 근로가 제한됩니다(제64조, 제69조, 제70조). 정확한 한도는 확인이 필요합니다."]),
+ scenario:L("Daniel, a university student with permission to work part-time, works at a café from 6 pm to 11 pm, five days a week, paid a flat hourly rate with no extra for the hour after 10 pm. He first checks whether the café has 5 or more employees. If it does, work between 22:00 and 06:00 should carry a premium. He also compares his hourly rate with the current minimum wage and writes down his actual hours each day in case he needs to prove them later.","허가를 받아 아르바이트하는 대학생 대니얼은 카페에서 오후 6시부터 11시까지 주 5일 일하고, 오후 10시 이후 시간에도 같은 시급을 받습니다. 먼저 카페가 상시 5인 이상인지 확인합니다. 5인 이상이라면 오후 10시부터 오전 6시 사이의 근로에는 가산 임금이 붙어야 합니다. 또한 자신의 시급을 현재 최저임금과 비교하고, 나중에 입증할 수 있도록 매일의 실제 근로시간을 기록해 둡니다."),
+ actions:L(["Write down your start time, end time and breaks every day.","Compare your hourly wage with the current minimum wage.","Ask how overtime and night work are paid, and whether the workplace has 5 or more employees.","If something looks wrong, ask the employer in writing first, then contact the Ministry of Employment and Labor (1350)."],["매일 출근·퇴근 시간과 휴게시간을 기록합니다.","시급을 현재 최저임금과 비교합니다.","연장·야간 근로 수당이 어떻게 지급되는지, 사업장이 상시 5인 이상인지 물어봅니다.","문제가 있어 보이면 먼저 사용자에게 서면으로 문의하고, 그래도 해결되지 않으면 고용노동부(1350)에 상담하세요."]),
+ exceptions:L(["Workplaces with fewer than 5 employees: only some provisions apply (e.g., no premium pay under Art. 56).","Some job types and arrangements (e.g., certain flexible or exempt categories) follow special rules.","Minimum wage rules have limited exceptions (e.g., trainee periods in certain contracts) — verify before relying on one."],["상시 5인 미만 사업장은 일부 규정만 적용됩니다(예: 제56조 가산수당 미적용).","일부 직종과 근로 형태(탄력적 근로시간제, 적용 제외 업무 등)에는 특례가 있습니다.","최저임금에는 제한적인 예외(예: 일정한 수습 기간)가 있으므로 의존하기 전에 확인하세요."]),
+ flags:L(["Insert the current minimum wage and its legal effective date only after verifying on minimumwage.go.kr.","Verify the weekly-holiday allowance conditions and the working-age/hours limits for 15–17-year-olds.","Verify the minimum-wage exceptions."],["minimumwage.go.kr에서 확인한 뒤에만 현재 최저임금과 시행일을 기재할 것.","주휴수당 요건과 만 15~17세의 연령·근로시간 한도를 확인할 것.","최저임금 적용 예외를 확인할 것."]),
+ help:["moel","mwc","klac"],
+ sources:[{t:L("Labor Standards Act (Korean text)","근로기준법 (국문)"),u:lawUrl("근로기준법")},{t:L("Minimum Wage Act (Korean text)","최저임금법 (국문)"),u:lawUrl("최저임금법")},{t:L("Minimum Wage Commission","최저임금위원회"),u:"https://www.minimumwage.go.kr"}],
+ related:["work-2","work-4","work-1"],checklist:"c-job"},
+
+"work-4":{
+ sub:L("What to do when pay is late, short or missing","임금이 늦거나 모자라거나 지급되지 않을 때"),
+ labels:["Wages","Unpaid wages"],groups:L("Workers incl. part-time; status questions apply","시간제 포함 근로자; 체류자격 관련 확인 필요"),
+ kw:["unpaid","unpaid wages","wage","wages","salary","paid","not paid","임금","체불","임금체불","월급","급여","못 받","퇴직금","severance","진정","petition","labor office","노동청","지방고용노동청","1350","wage arrears","last pay"],
+ overview:L("Wages must be paid in full, in cash or bank transfer, directly to you, on a fixed date at least once a month. When an employer does not pay, you can ask the labor authorities to investigate. Evidence you collect early makes the biggest difference.","임금은 통화로, 직접, 전액을, 매월 1회 이상 일정한 날짜에 지급해야 합니다. 사용자가 임금을 지급하지 않으면 노동 당국에 조사를 요청할 수 있습니다. 초기에 모아 둔 증거가 결과에 가장 큰 영향을 줍니다."),
+ applies:L(["Workers who have performed work for an employer in Korea, including part-time workers.","Special questions arise if the work was not permitted under your status of stay — seek advice before filing."],["한국에서 사용자를 위해 일한 근로자(시간제 포함).","체류자격상 허가되지 않은 일을 한 경우에는 별도의 문제가 생기므로 신고 전에 먼저 상담을 받으세요."]),
+ laws:[lw("lsa",L("Art. 43 (payment of wages); Art. 36 (settlement of payments within 14 days after termination); Art. 49 (extinctive prescription: 3 years)","제43조(임금 지급), 제36조(금품 청산: 퇴직 후 14일 이내), 제49조(소멸시효 3년)"),null),lw("rbsa",L("Art. 4 (retirement benefit system) — severance for workers with 1 year or more of service and sufficient weekly hours","제4조(퇴직급여제도의 설정) — 계속 근로 1년 이상, 주 소정근로시간 요건"),L("Verify the conditions.","요건 확인 필요.")),lw("wcga",L("Substitute payment of unpaid wages in certain insolvency situations","일정한 도산 상황에서의 체불임금 대지급금"),L("Verify eligibility and procedure.","요건·절차 확인 필요."))],
+ understand:L(["After you stop working, the employer should settle all wages and other money owed within 14 days of the end of employment, unless the parties agree to extend (Art. 36).","Wage claims generally expire after 3 years (Art. 49), but do not wait: records and memories fade.","The usual path is a petition (진정) to the regional employment and labor office, which can investigate and order payment. You can file through the Ministry's labor portal or in person, and you can ask the Labor Call Center (1350) how."],["근로 관계가 끝나면 당사자 합의로 기일을 연장하지 않는 한 사용자는 14일 이내에 임금 등 일체의 금품을 지급해야 합니다(제36조).","임금 채권은 원칙적으로 3년이 지나면 소멸시효가 완성됩니다(제49조). 그러나 기록과 기억이 흐려지기 전에 서두르세요.","일반적인 경로는 지방고용노동관서에 진정을 제기하는 것으로, 관서가 조사하여 지급을 지도할 수 있습니다. 고용노동부 노동포털이나 방문 접수가 가능하며, 방법은 고용노동부 상담센터(1350)에 문의할 수 있습니다."]),
+ actions:L(["Collect evidence: contract, messages about schedule and pay, bank statements, timesheets, photos of rosters, names of colleagues.","Write down: dates worked, hours, agreed rate, amounts paid and unpaid.","Ask the employer for payment in writing (message or letter) and keep a copy.","File a petition with the regional employment and labor office, or call 1350 for guidance.","For lawsuits or other steps, ask the Korea Legal Aid Corporation (132) about eligibility for assistance."],["증거를 모읍니다: 계약서, 근무 일정과 임금에 관한 메시지, 통장 거래 내역, 근무 기록, 근무표 사진, 동료 이름.","근무한 날짜, 시간, 약정 시급, 받은 금액과 못 받은 금액을 정리합니다.","사용자에게 지급을 서면(메시지·편지)으로 요청하고 사본을 보관합니다.","지방고용노동관서에 진정을 제기하거나 1350에 전화하여 안내를 받습니다.","소송 등 다른 절차는 대한법률구조공단(132)에 지원 가능 여부를 문의하세요."]),
+ exceptions:L(["Time limits apply to wage claims.","If the employer is insolvent, substitute payment may be possible under separate rules.","If your work was outside your permitted activities, claims can have immigration consequences — get advice first."],["임금 청구에는 시효가 있습니다.","사용자가 도산한 경우 별도 제도에 따른 대지급이 가능할 수 있습니다.","체류자격상 허가된 활동 범위를 벗어난 일이었다면 청구가 체류에 영향을 줄 수 있으므로 먼저 상담을 받으세요."]),
+ flags:L(["Verify Art. 36's wording on extension by agreement, and the retirement-benefit conditions.","Verify substitute-payment eligibility for foreign workers and the exact filing channels.","Verify immigration consequences of claiming wages for unpermitted work."],["제36조의 기일 연장 합의 문구와 퇴직급여 요건을 확인할 것.","외국인 근로자의 대지급금 요건과 정확한 접수 경로를 확인할 것.","허가받지 않은 근로의 임금을 청구할 때의 체류상 영향을 확인할 것."]),
+ help:["moel","klac","hikorea"],
+ sources:[{t:L("Labor Standards Act (Korean text)","근로기준법 (국문)"),u:lawUrl("근로기준법")},{t:L("Ministry of Employment and Labor","고용노동부"),u:"https://www.moel.go.kr"},{t:L("Labor portal (Ministry of Employment and Labor)","노동포털 (고용노동부)"),u:"https://labor.moel.go.kr"}],
+ related:["work-2","work-3","help-6"],checklist:"c-wage"},
+
+"help-4":{
+ sub:L("Which number to call, and when","어느 번호에 언제 전화해야 하는가"),
+ labels:["Emergency","Public agencies"],groups:L("All students","모든 학생"),
+ kw:["emergency","긴급","police","경찰","112","119","ambulance","구급","fire","소방","immigration","1345","labor","1350","legal aid","132","consumer","1372","human rights","1331","phone number","전화번호","contact","help"],
+ overview:L("In an emergency, call 112 (police) or 119 (fire and ambulance) first. For other problems, Korea has several national help lines. The list below uses well-known public numbers; each must be re-verified before this page is published.","위급한 상황에서는 먼저 112(경찰) 또는 119(소방·구급)에 전화하세요. 그 밖의 문제에는 여러 국가 상담 번호가 있습니다. 아래 목록은 널리 알려진 공공 번호이며, 게시 전에 각각 다시 확인해야 합니다."),
+ applies:L(["Anyone in Korea, regardless of nationality or status of stay."],["국적이나 체류자격과 관계없이 한국에 있는 모든 사람."]),
+ understand:L(["If you or someone else is in immediate danger, call 112 or 119 and say your location first. Other numbers are for advice and reporting, not for emergencies.","If you do not speak Korean, say your language as early as you can and ask for interpretation. Whether and how each line offers interpretation must be verified; this site does not claim language coverage that has not been checked."],["본인이나 다른 사람이 즉각적인 위험에 처했다면 112나 119에 전화해 위치부터 말하세요. 나머지 번호는 상담과 신고용이며 응급 상황용이 아닙니다.","한국어가 어렵다면 가능한 한 빨리 사용 언어를 말하고 통역을 요청하세요. 각 번호의 통역 제공 여부와 방식은 확인이 필요하며, 이 사이트는 확인되지 않은 언어 지원을 주장하지 않습니다."]),
+ actions:L(["Immediate danger: 112 (police) or 119 (fire/ambulance).","Visa or stay questions: Immigration Contact Center 1345.","Labor problems: Ministry of Employment and Labor 1350.","Legal consultation: Korea Legal Aid Corporation 132.","Consumer problems: consumer helpline 1372.","Discrimination or human-rights concerns: National Human Rights Commission 1331."],["즉각적 위험: 112(경찰), 119(소방·구급).","비자·체류 문의: 외국인종합안내센터 1345.","노동 문제: 고용노동부 1350.","법률 상담: 대한법률구조공단 132.","소비자 문제: 소비자상담 1372.","차별·인권 문제: 국가인권위원회 1331."]),
+ flags:L(["Verify every number and the interpretation services of each line before publication."],["게시 전에 모든 번호와 각 상담 창구의 통역 서비스를 확인할 것."]),
+ help:["police","fire","hikorea","moel","klac","kca","nhrck","school117","pipc"],showAllDir:true,
+ sources:[{t:L("Hi Korea","하이코리아"),u:"https://www.hikorea.go.kr"},{t:L("Korea Legal Aid Corporation","대한법률구조공단"),u:"https://www.klac.or.kr"},{t:L("Korean National Police Agency","경찰청"),u:"https://www.police.go.kr"}],
+ related:["help-1","help-3","help-7"],checklist:"c-problem"},
+
+"everyday-1":{
+ sub:L("Returns, refunds and complaints when buying goods and services","물건·서비스 구매 시 반품, 환불, 불만 처리"),
+ labels:["Consumer","Refund"],groups:L("All students as consumers","소비자로서의 모든 학생"),
+ kw:["refund","환불","return","반품","consumer","소비자","exchange","교환","purchase","구매","shop","store","online shopping","온라인 쇼핑","withdrawal","청약철회","7 days","defective","불량","1372","consumer agency","소비자원"],
+ overview:L("Consumer law gives you rights to accurate information and safe goods, and in many cases to cancel or return what you bought. The rules differ for in-store, online and door-to-door purchases.","소비자법은 정확한 정보와 안전한 상품을 받을 권리를 보장하고, 많은 경우 구매 취소·반품을 인정합니다. 매장 구매, 온라인 구매, 방문판매 등에 따라 규정이 다릅니다."),
+ applies:L(["Anyone who buys goods or services from a business in Korea.","Purchases from overseas sellers are not covered in the same way — check the seller's own terms."],["한국의 사업자로부터 상품이나 서비스를 구매하는 모든 사람.","해외 판매자와의 거래는 같은 방식으로 보호되지 않을 수 있으므로 판매자의 약관을 확인하세요."]),
+ laws:[lw("fac",L("Art. 4 (basic consumer rights)","제4조(소비자의 기본적 권리)"),L("Dispute-mediation provisions: add article numbers after verification.","분쟁조정 조항: 확인 후 조문 번호 보완 필요.")),lw("eca",L("Art. 17 (withdrawal of an offer or cancellation of the contract)","제17조(청약철회 등)"),L("Verify deadlines and exceptions in current text.","기한과 예외를 현행 조문으로 확인 필요."))],
+ understand:L(["In a physical store there is generally no automatic right to return a product that is not defective; the store's own policy decides. For defective goods or services, consumers can seek repair, replacement or refund under the consumer dispute-resolution standards.","For online and similar distance purchases, the E-Commerce Act gives a right to withdraw within a short period after receiving the goods — generally 7 days (Art. 17) — and longer periods when the goods differ from what was advertised. Certain items are excluded.","If the problem is not resolved, contact the consumer helpline (1372) and the Korea Consumer Agency, which can advise and, in some cases, mediate."],["오프라인 매장에서는 불량이 아닌 상품의 반품을 자동으로 보장하는 일반 규정은 없고, 매장 정책에 따릅니다. 상품이나 서비스에 하자가 있는 경우에는 소비자분쟁해결기준에 따라 수리·교환·환불을 요구할 수 있습니다.","온라인 등 통신판매에서는 전자상거래법이 상품을 받은 날부터 일정 기간(일반적으로 7일, 제17조) 안에 청약철회할 권리를 주고, 광고와 다른 상품의 경우 더 긴 기간을 인정합니다. 일부 품목은 제외됩니다.","해결되지 않으면 소비자상담(1372)과 한국소비자원에 문의하세요. 상담과 경우에 따라 분쟁조정을 받을 수 있습니다."]),
+ scenario:L("Mina orders headphones from a Korean online shop. They arrive the same week and she decides she does not want them. She contacts the shop in writing within the withdrawal period and asks for a refund, keeping the order confirmation and screenshots. The shop says its policy excludes returns. Mina calls the consumer helpline (1372) to check whether the exclusion is allowed for her purchase.","미나는 한국의 온라인 쇼핑몰에서 헤드폰을 주문했습니다. 같은 주에 도착했지만 마음이 바뀌었습니다. 미나는 철회 기간 안에 쇼핑몰에 서면으로 환불을 요청하고 주문 확인서와 화면 캡처를 보관합니다. 쇼핑몰은 반품 불가 정책이라고 답합니다. 미나는 소비자상담(1372)에 전화해 이런 제외가 자신의 구매에 허용되는지 확인합니다."),
+ actions:L(["Keep receipts, order confirmations, and screenshots of product pages.","Contact the seller in writing and state what you want (refund, exchange, repair).","Check withdrawal deadlines the day you receive the goods.","Call the consumer helpline (1372) if the seller refuses."],["영수증, 주문 확인서, 상품 페이지 캡처를 보관합니다.","판매자에게 서면으로 원하는 바(환불, 교환, 수리)를 밝힙니다.","상품을 받은 날 바로 철회 기한을 확인합니다.","판매자가 거부하면 소비자상담(1372)에 전화하세요."]),
+ exceptions:L(["Goods that are used, damaged by the consumer, perishable, copyable, or made to order may be excluded from withdrawal.","Cost of return shipping usually depends on whether the reason is a change of mind or a defect.","Overseas sellers are outside the usual domestic protections."],["사용했거나 소비자의 책임으로 훼손된 상품, 쉽게 변질되는 상품, 복제가 가능한 상품, 주문 제작 상품은 철회가 제한될 수 있습니다.","반품 배송비는 단순 변심인지 하자인지에 따라 달라지는 것이 일반적입니다.","해외 판매자는 국내 소비자 보호 규정의 범위 밖에 있습니다."]),
+ flags:L(["Verify Art. 17's periods and exceptions, and the dispute-mediation article numbers.","Verify language availability of the 1372 helpline."],["제17조의 기간·예외와 분쟁조정 조문 번호를 확인할 것.","1372 상담의 언어 지원 여부를 확인할 것."]),
+ help:["kca","nhrck"],
+ sources:[{t:L("E-Commerce Consumer Protection Act (Korean text)","전자상거래법 (국문)"),u:lawUrl(LAWS.eca.ko)},{t:L("Framework Act on Consumers (Korean text)","소비자기본법 (국문)"),u:lawUrl("소비자기본법")},{t:L("Korea Consumer Agency","한국소비자원"),u:"https://www.kca.go.kr"}],
+ related:["everyday-2","everyday-3"],checklist:null}
+};
+
+/* ---------- Glossary ---------- */
+const GLOSS=[
+{id:"g-deposit",en:"Rental deposit",ko:"보증금",cat:"housing",ch:"home",t:"home-7",d:L("A sum paid to the landlord at the start of a lease and returned when the lease ends.","임대차 시작 때 임대인에게 맡기고, 계약이 끝나면 돌려받는 금액.")},
+{id:"g-jeonse",en:"Jeonse",ko:"전세",cat:"housing",ch:"home",t:"home-2",d:L("A Korean lease type with a large lump-sum deposit and little or no monthly rent.","큰 보증금을 맡기고 월세 없이(또는 아주 적게) 거주하는 한국식 임대차.")},
+{id:"g-monthly",en:"Monthly rent (wolse)",ko:"월세",cat:"housing",ch:"home",t:"home-3",d:L("A lease in which rent is paid monthly, usually with a smaller deposit.","보증금과 함께 매월 차임을 내는 임대차.")},
+{id:"g-move-in",en:"Move-in report",ko:"전입신고",cat:"housing",ch:"home",t:"home-7",d:L("Reporting your new address after moving in. Together with moving in, it gives a lease opposability.","이사 후 새 주소를 신고하는 것. 실제 입주와 함께 임차권에 대항력을 부여합니다.")},
+{id:"g-fixed",en:"Fixed-date stamp",ko:"확정일자",cat:"housing",ch:"home",t:"home-7",d:L("An official date stamp on a lease contract that sets your priority for repayment if the home is sold at auction.","임대차계약서에 받는 공적 일자 확인. 경매 시 보증금 우선변제 순위를 정합니다.")},
+{id:"g-opp",en:"Opposability (right to assert against third parties)",ko:"대항력",cat:"housing",ch:"home",t:"home-7",d:L("The ability to keep your lease rights even if the property changes hands.","집주인이 바뀌어도 임차권을 주장할 수 있는 힘.")},
+{id:"g-lrorder",en:"Lease registration order",ko:"임차권등기명령",cat:"housing",ch:"home",t:"home-7",d:L("A court order registering your lease on the property register so protections continue after you move out.","법원 명령으로 임차권을 등기하여 이사 후에도 보호를 유지하게 하는 제도.")},
+{id:"g-hlpa",en:"Housing Lease Protection Act",ko:"주택임대차보호법",cat:"housing",ch:"home",t:"home-7",d:L("The main statute protecting tenants of residential leases in Korea.","주거용 임대차의 임차인을 보호하는 대표 법률.")},
+{id:"g-register",en:"Property register",ko:"등기부등본",cat:"housing",ch:"home",t:"home-4",d:L("An official record of who owns a property and what debts or mortgages are attached.","부동산의 소유자와 근저당 등 권리관계를 보여주는 공적 장부.")},
+{id:"g-certified",en:"Certified mail with content proof",ko:"내용증명",cat:"procedure",ch:"help",t:"home-7",d:L("A postal service that proves what a letter said, when and to whom it was sent.","편지의 내용, 발송 시기, 수신인을 우체국이 증명해 주는 서비스.")},
+{id:"g-payorder",en:"Payment order",ko:"지급명령",cat:"procedure",ch:"help",t:"help-5",d:L("A simplified court procedure to demand payment of a money claim.","금전 채권의 지급을 구하는 간이한 법원 절차.")},
+{id:"g-mediation",en:"Mediation",ko:"조정",cat:"procedure",ch:"help",t:"help-2",d:L("A process where a neutral committee helps the parties reach an agreement without a full trial.","중립적 위원회가 정식 재판 없이 합의에 이르도록 돕는 절차.")},
+{id:"g-petition",en:"Labor petition",ko:"진정",cat:"employment",ch:"work",t:"work-4",d:L("A request to the labor authorities to investigate a labor-law violation such as unpaid wages.","임금 체불 등 노동법 위반을 노동관서에 조사해 달라고 요청하는 것.")},
+{id:"g-contract",en:"Employment contract",ko:"근로계약서",cat:"employment",ch:"work",t:"work-2",d:L("The document stating wages, hours and other working conditions.","임금, 근로시간 등 근로조건을 적은 서면.")},
+{id:"g-minwage",en:"Minimum wage",ko:"최저임금",cat:"employment",ch:"work",t:"work-3",d:L("The lowest hourly wage an employer may pay, set every year.","사용자가 지급해야 하는 최저 시급으로 매년 결정됩니다.")},
+{id:"g-arrears",en:"Wage arrears",ko:"임금체불",cat:"employment",ch:"work",t:"work-4",d:L("Wages that are due but not paid.","지급 기일이 지났는데도 지급되지 않은 임금.")},
+{id:"g-weekly",en:"Weekly holiday allowance",ko:"주휴수당",cat:"employment",ch:"work",t:"work-3",d:L("Paid pay for the weekly rest day, available if weekly hours meet a threshold.","주당 근로시간이 일정 기준 이상일 때 주휴일에 지급되는 유급 수당.")},
+{id:"g-status",en:"Status of stay (visa category)",ko:"체류자격",cat:"immigration",ch:"work",t:"work-1",d:L("The legal category that defines what you may do while staying in Korea.","한국 체류 중 할 수 있는 활동을 정하는 법적 분류.")},
+{id:"g-pt-permit",en:"Part-time work permission",ko:"시간제취업 허가",cat:"immigration",ch:"work",t:"work-1",d:L("Immigration permission for students to work part-time under set conditions.","유학생이 일정 조건에서 시간제로 일할 수 있게 하는 출입국 허가.")},
+{id:"g-arc",en:"Alien registration card",ko:"외국인등록증",cat:"immigration",ch:"help",t:"work-1",d:L("The ID card for foreign residents who stay long term in Korea.","장기 체류 외국인에게 발급되는 신분증.")},
+{id:"g-withdraw",en:"Withdrawal of an offer (cooling-off)",ko:"청약철회",cat:"consumer",ch:"everyday",t:"everyday-1",d:L("The consumer's right to cancel certain purchases within a legal period.","일정 기간 안에 구매를 취소할 수 있는 소비자의 권리.")},
+{id:"g-pi",en:"Personal information",ko:"개인정보",cat:"privacy",ch:"everyday",t:"everyday-4",d:L("Information that can identify a person, such as name, ID number or contact details.","이름, 주민·외국인등록번호, 연락처 등 개인을 식별할 수 있는 정보.")}
+];
+const GCATS={housing:L("Housing","주거"),employment:L("Employment","근로"),immigration:L("Immigration","출입국"),procedure:L("Procedure","절차"),consumer:L("Consumer","소비자"),privacy:L("Privacy","개인정보")};
+
+/* ---------- Checklists ---------- */
+const CHECK=[
+{id:"c-lease",cat:"housing",ch:"home",t:L("Before you sign a lease","임대차 계약 전 확인"),items:L(["Get the property register (등기부등본) from the Internet Registry Office and check the owner's name.","Check mortgages and other debts against the deposit amount.","Confirm that the person signing is the owner or an authorized agent (ID or power of attorney).","Write down the deposit, rent, management fees, term and repair responsibilities in the contract.","Ask for a translation of the contract or bring someone you trust.","Plan to report your address and get the fixed-date stamp on move-in day.","Take dated photos of the home's condition at move-in."],["인터넷등기소에서 등기부등본을 발급받아 소유자 이름을 확인한다.","근저당 등 채무를 보증금 액수와 비교해 본다.","계약 상대방이 소유자 본인 또는 정당한 대리인인지 신분증·위임장으로 확인한다.","보증금, 월세, 관리비, 기간, 수리 책임을 계약서에 적는다.","계약서 번역을 요청하거나 믿을 수 있는 사람과 함께 확인한다.","입주 당일 전입신고와 확정일자를 받을 계획을 세운다.","입주 시 집 상태를 날짜가 보이는 사진으로 남긴다."])},
+{id:"c-deposit",cat:"housing",ch:"home",t:L("Recovering a rental deposit","보증금 돌려받기"),items:L(["Confirm the lease end date and the notice period.","Give written notice that you will leave and ask for the deposit back.","Send a certified-mail demand (내용증명) with amount, account and deadline.","Do not move out or cancel your address report before the deposit is returned.","If you must move, apply for a lease registration order first.","Consider the Housing Lease Dispute Mediation Committee.","Ask Korea Legal Aid Corporation (132) about legal options.","If you have deposit insurance, contact the guarantor."],["계약 종료일과 통지 기간을 확인한다.","나간다는 뜻과 보증금 반환 요청을 서면으로 알린다.","금액, 계좌, 기한을 적은 내용증명을 보낸다.","보증금을 받기 전에는 이사하거나 전입신고를 말소하지 않는다.","이사해야 한다면 먼저 임차권등기명령을 신청한다.","주택임대차분쟁조정위원회 조정을 고려한다.","대한법률구조공단(132)에 법적 선택지를 문의한다.","보증금반환보증이 있다면 보증기관에 연락한다."])},
+{id:"c-job",cat:"employment",ch:"work",t:L("Starting a part-time job","아르바이트 시작 전 확인"),items:L(["Confirm that your status of stay allows part-time work.","Apply for and keep your part-time work permission.","Ask for a written contract before the first shift.","Check pay rate against the current minimum wage.","Confirm the pay date and how you will be paid.","Keep a daily record of hours worked.","Keep your passport and alien registration card yourself."],["체류자격상 시간제 취업이 가능한지 확인한다.","시간제취업 허가를 신청하고 허가 문서를 보관한다.","첫 근무 전에 서면 근로계약서를 요청한다.","시급을 현재 최저임금과 비교한다.","임금 지급일과 지급 방법을 확인한다.","매일 근무 시간을 기록한다.","여권과 외국인등록증은 본인이 보관한다."])},
+{id:"c-wage",cat:"employment",ch:"work",t:L("Evidence for unpaid wages","체불 임금 증거 모으기"),items:L(["Employment contract or written offer.","Messages about schedule, pay rate and pay dates.","Bank statements showing what you received.","Timesheets, rosters or your own daily record.","Photos of schedules or notices at the workplace.","Names and contacts of coworkers who can confirm.","A list of dates, hours and amounts unpaid."],["근로계약서 또는 서면 제안.","근무 일정, 시급, 지급일에 관한 메시지.","받은 금액을 보여주는 통장 거래 내역.","근무 기록, 근무표 또는 직접 적은 일일 기록.","근무처의 일정표나 공지 사진.","확인해 줄 수 있는 동료의 이름과 연락처.","날짜, 시간, 미지급 금액을 정리한 목록."])},
+{id:"c-problem",cat:"reporting",ch:"help",t:L("Before you report a problem","문제를 신고하기 전 준비"),items:L(["Write a short timeline: what happened, when, where, who.","Collect documents, messages, photos and receipts.","Note the names and contacts of witnesses.","Identify which agency handles your problem.","Write down any deadlines that apply.","Prepare your ID and contact details.","Ask for an interpreter if you need one."],["무슨 일이, 언제, 어디서, 누구와 있었는지 간단한 시간순 기록을 쓴다.","문서, 메시지, 사진, 영수증을 모은다.","목격자의 이름과 연락처를 적어 둔다.","내 문제를 다루는 기관이 어디인지 확인한다.","적용되는 기한이 있다면 적어 둔다.","신분증과 연락처를 준비한다.","통역이 필요하면 미리 요청한다."])}
+];
+const CCATS={housing:L("Housing","주거"),employment:L("Employment","근로"),school:L("School","학교"),reporting:L("Reporting problems","문제 신고")};
+
+/* ---------- Directory (numbers = widely published public lines; VERIFY) ---------- */
+const DIR=[
+{id:"police",en:"Korean National Police Agency",ko:"경찰청 (긴급신고)",tel:"112",url:"https://www.police.go.kr",cats:["emergency","crime"],chs:["help","everyday"],d:L("Emergency reporting for crimes and immediate danger.","범죄와 긴급 위험 신고.")},
+{id:"fire",en:"National Fire Agency (fire & ambulance)",ko:"소방청 (화재·구급)",tel:"119",url:"https://www.nfa.go.kr",cats:["emergency"],chs:["help"],d:L("Fire, rescue and emergency medical response.","화재, 구조, 응급 의료 출동.")},
+{id:"hikorea",en:"Immigration Contact Center / Hi Korea",ko:"외국인종합안내센터 / 하이코리아",tel:"1345",url:"https://www.hikorea.go.kr",cats:["immigration","visa"],chs:["work","student","help"],d:L("Information about visas, status of stay and immigration procedures.","비자, 체류자격, 출입국 절차 안내.")},
+{id:"moel",en:"Ministry of Employment and Labor",ko:"고용노동부",tel:"1350",url:"https://www.moel.go.kr",cats:["labor","wages"],chs:["work"],d:L("Labor consultation, wage-arrears petitions and standard contract forms.","노동 상담, 임금체불 진정, 표준근로계약서 안내.")},
+{id:"mwc",en:"Minimum Wage Commission",ko:"최저임금위원회",tel:null,url:"https://www.minimumwage.go.kr",cats:["labor","wages"],chs:["work"],d:L("Publishes the current minimum wage.","현행 최저임금 공표.")},
+{id:"klac",en:"Korea Legal Aid Corporation",ko:"대한법률구조공단",tel:"132",url:"https://www.klac.or.kr",cats:["legal","housing","labor"],chs:["home","work","help"],d:L("Legal consultation and aid; also supports housing lease dispute mediation.","법률 상담과 구조 지원, 주택임대차 분쟁조정 지원.")},
+{id:"kca",en:"Korea Consumer Agency / Consumer helpline",ko:"한국소비자원 / 소비자상담",tel:"1372",url:"https://www.kca.go.kr",cats:["consumer"],chs:["everyday"],d:L("Consumer counseling and dispute mediation.","소비자 상담과 분쟁 조정.")},
+{id:"nhrck",en:"National Human Rights Commission of Korea",ko:"국가인권위원회",tel:"1331",url:"https://www.humanrights.go.kr",cats:["rights","discrimination"],chs:["everyday","work","student"],d:L("Complaints about discrimination and human-rights violations.","차별과 인권침해 진정 접수.")},
+{id:"school117",en:"School Violence Report Center",ko:"학교폭력 신고센터",tel:"117",url:"https://www.police.go.kr",cats:["school","emergency"],chs:["student"],d:L("Reporting and counseling about school violence.","학교폭력 신고와 상담.")},
+{id:"pipc",en:"Personal Information Infringement Report Center (KISA)",ko:"개인정보침해 신고센터 (KISA)",tel:"118",url:"https://privacy.kisa.or.kr",cats:["privacy"],chs:["everyday","student"],d:L("Reporting and counseling on personal-information problems.","개인정보 침해 신고와 상담.")},
+{id:"iros",en:"Internet Registry Office",ko:"인터넷등기소",tel:null,url:"https://www.iros.go.kr",cats:["housing"],chs:["home"],d:L("Issue property registers (등기부등본) online.","등기부등본을 온라인으로 발급.")},
+{id:"molit",en:"Ministry of Land, Infrastructure and Transport",ko:"국토교통부",tel:null,url:"https://www.molit.go.kr",cats:["housing"],chs:["home"],d:L("Housing and rental policy and guidance.","주거·임대차 정책과 안내.")},
+{id:"moe",en:"Ministry of Education",ko:"교육부",tel:null,url:"https://www.moe.go.kr",cats:["school"],chs:["student"],d:L("Education policy and school-related guidance.","교육 정책과 학교 관련 안내.")}
+];
+const DCATS=["emergency","immigration","labor","legal","housing","consumer","rights","school","privacy"];
+const DCL={emergency:L("Emergency","긴급"),immigration:L("Immigration","출입국"),labor:L("Labor","노동"),legal:L("Legal aid","법률 지원"),housing:L("Housing","주거"),consumer:L("Consumer","소비자"),rights:L("Human rights","인권"),school:L("School","학교"),privacy:L("Privacy","개인정보")};
+
+/* ---------- Official sources ---------- */
+const SRC_STATUTES=Object.values(LAWS).map(x=>({en:x.en,ko:x.ko,u:lawUrl(x.ko)}));
+const SRC_AGENCIES=DIR.map(x=>({en:x.en,ko:x.ko,u:x.url}));
+const SRC_OTHER=[{en:"Korea Legislation Research Institute — English translations of Korean laws",ko:"한국법제연구원 — 법령 영문 번역",u:"https://elaw.klri.re.kr"},{en:"Korean National Law Information Center",ko:"국가법령정보센터",u:"https://www.law.go.kr"},{en:"Labor portal (Ministry of Employment and Labor)",ko:"노동포털 (고용노동부)",u:"https://labor.moel.go.kr"}];
+
+/* ============================================================
+   State, helpers
+   ============================================================ */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let lang=store.get("jawoo-lang")||((navigator.language||"").toLowerCase().startsWith("ko")?"ko":"en");
+let theme=store.get("jawoo-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+const t=k=>UI[lang][k]||UI.en[k]||k;
+const tx=o=>o==null?"":(typeof o==="string"?o:(o[lang]||o.en));
+const openCh=new Set();
+let memCl={};
+const ic={
+ menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',search:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/>',
+ sun:'<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/>',
+ moon:'<path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/>',chev:'<path d="M9 6l6 6-6 6"/>'
+};
+const I=n=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${ic[n]}</svg>`;
+const bodyHTML=(v)=>{const x=tx(v);if(Array.isArray(x))return `<ul class="b">${x.map(i=>`<li>${esc(i)}</li>`).join("")}</ul>`;return `<p>${esc(x)}</p>`};
+const paras=v=>{const x=tx(v);return (Array.isArray(x)?x:[x]).map(p=>`<p>${esc(p)}</p>`).join("")};
+const olist=v=>`<ol class="b">${tx(v).map(i=>`<li>${esc(i)}</li>`).join("")}</ol>`;
+
+/* ============================================================
+   Search
+   ============================================================ */
+const STOP=new Set("a an the my me i we you your is are was were be to of in on at for and or but not no do does did can could should would will won wont t s it this that how what where when why with from about get got have has had".split(" "));
+const CONCEPTS=[
+ ["deposit","보증금","landlord","집주인","임대인","security deposit","전세","jeonse","lease","임대차","rent","월세","tenant","세입자","deposit recovery","내용증명"],
+ ["wage","wages","salary","pay","paid","unpaid","월급","임금","체불","급여","시급","minimum wage","최저임금","overtime","연장근로","hourly","퇴직금","severance"],
+ ["part-time","part time","parttime","아르바이트","알바","visa","체류자격","비자","work permit","시간제취업","취업","d-2","d-4","permission to work","job","work","working"],
+ ["contract","계약서","근로계약","employment contract","근로계약서","sign","서명","passport","여권"],
+ ["refund","환불","consumer","소비자","online shopping","온라인","쇼핑","withdrawal","청약철회","purchase","구매","exchange","교환","return","반품","defective","불량"],
+ ["emergency","긴급","police","경찰","112","119","ambulance","구급","danger","위험","fire"],
+ ["school","학교","bullying","괴롭힘","학교폭력","따돌림","disciplinary","징계","enrollment","입학","전학","attendance","출결"],
+ ["privacy","개인정보","personal information","data","cctv"],
+ ["discrimination","차별","racism","인종","human rights","인권","harassment","성희롱"],
+ ["interpreter","통역","translation","번역","legal aid","법률구조","lawyer","변호사","legal help","법률","132"],
+ ["scam","fraud","사기","보이스피싱","phishing"]
+];
+let INDEX=[];
+function buildIndex(){
+ INDEX=[];
+ CH.forEach(c=>{
+  INDEX.push({type:"chapter",path:"#/chapter/"+c.id,en:c.n+" "+c.en,ko:c.n+" "+c.ko,pe:"",pk:"",terms:[c.en,c.ko,c.sub.en,c.sub.ko].map(s=>s.toLowerCase()),d:c.sub});
+  c.topics.forEach((tp,i)=>{
+   const id=tid(c.id,i),C=CONTENT[id];
+   INDEX.push({type:"topic",path:"#/topic/"+id,en:tp[0],ko:tp[1],pe:c.n+" "+c.en,pk:c.n+" "+c.ko,planned:!C,terms:[tp[0],tp[1],...(C?C.kw:(STUB_KW[id]||[]))].map(s=>s.toLowerCase()),d:C?C.sub:null});
+  });
+ });
+ GLOSS.forEach(g=>INDEX.push({type:"glossary",path:"#/ref/glossary/"+g.id,en:g.en,ko:g.ko,pe:"Legal Glossary",pk:"법률 용어집",terms:[g.en,g.ko,tx0(g.d,"en"),tx0(g.d,"ko")].map(s=>s.toLowerCase()),d:g.d}));
+ CHECK.forEach(c=>INDEX.push({type:"checklist",path:"#/ref/checklists/"+c.id,en:c.t.en,ko:c.t.ko,pe:"Checklists",pk:"체크리스트",terms:[c.t.en,c.t.ko,...c.items.en,...c.items.ko].map(s=>s.toLowerCase())}));
+ DIR.forEach(d=>INDEX.push({type:"directory",path:"#/ref/directory/"+d.id,en:d.en,ko:d.ko,pe:"Support Directory",pk:"지원 기관",terms:[d.en,d.ko,d.tel||"",...d.cats,d.d.en,d.d.ko].map(s=>s.toLowerCase()),d:d.d}));
+ [...SRC_STATUTES,...SRC_OTHER].forEach(s=>INDEX.push({type:"source",path:"#/ref/sources",en:s.en,ko:s.ko,pe:"Official Sources",pk:"공식 출처",terms:[s.en,s.ko].map(x=>x.toLowerCase())}));
+}
+const tx0=(o,l)=>o[l];
+function tokens(q){return q.toLowerCase().split(/[^a-z0-9가-힣\-]+/).filter(w=>w&&!STOP.has(w)&&(/[가-힣]/.test(w)?w.length>=2:w.length>=3||/^\d+$/.test(w)))}
+function search(q){
+ q=(q||"").trim().toLowerCase();if(!q)return [];
+ const toks=tokens(q);const exp=new Set();
+ CONCEPTS.forEach(g=>{if(g.some(w=>w.length>=2&&q.includes(w)))g.forEach(w=>exp.add(w))});
+ const res=[];
+ INDEX.forEach(e=>{
+  let s=0;const title=(e.en+" "+e.ko).toLowerCase();
+  if(title.includes(q))s+=14;
+  toks.forEach(tk=>{if(title.includes(tk))s+=7;let best=0;e.terms.forEach(tm=>{if(tm.includes(tk))best=Math.max(best,tm.length<=24?4:2)});s+=best});
+  e.terms.forEach(tm=>{if(tm.length>=2&&tm.length<=40&&q.includes(tm))s+=5});
+  exp.forEach(w=>{if(!toks.includes(w)&&(title.includes(w)||e.terms.some(tm=>tm.length<=40&&tm.includes(w))))s+=1});
+  if(e.type==="topic"&&!e.planned)s*=1.25;
+  if(e.type==="chapter")s*=.6;
+  if(s>0)res.push({e,s});
+ });
+ return res.sort((a,b)=>b.s-a.s);
+}
+const TYPELABEL={topic:"typeTopic",glossary:"typeGlossary",checklist:"typeChecklist",source:"typeSource",directory:"typeDir",chapter:"typeChapter"};
+const entTitle=e=>lang==="ko"?e.ko:e.en;
+const entPath=e=>lang==="ko"?e.pk:e.pe;
+function resultsHTML(q){
+ const r=search(q);
+ if(!q.trim())return "";
+ if(!r.length){
+  return `<p class="empty" style="padding-bottom:6px">${esc(t("noResults"))}</p><div class="res-g"><h3>${esc(t("tryInstead"))}</h3>${CH.map(c=>`<a class="res" href="#/chapter/${c.id}"><div class="rt">${c.n} · ${esc(lang==="ko"?c.ko:c.en)}</div><div class="rd">${esc(tx(c.sub))}</div></a>`).join("")}</div>`;
+ }
+ const groups={};r.forEach(x=>{(groups[x.e.type]=groups[x.e.type]||[]).push(x)});
+ const order=Object.keys(groups).sort((a,b)=>groups[b][0].s-groups[a][0].s);
+ return order.map(ty=>`<section class="res-g"><h3>${esc(t(TYPELABEL[ty]))}</h3>${groups[ty].slice(0,8).map(({e})=>`<a class="res" href="${e.path}"><div class="rt">${esc(entTitle(e))}${e.planned?` <span class="tag" style="margin-left:6px">${esc(t("stPlan"))}</span>`:""}</div>${entPath(e)?`<div class="rp">${esc(entPath(e))}</div>`:""}${e.d?`<div class="rd">${esc(tx(e.d))}</div>`:""}</a>`).join("")}</section>`).join("");
+}
+
+/* ============================================================
+   Chrome (header, sidebar)
+   ============================================================ */
+function currentRoute(){
+ const h=location.hash.replace(/^#\/?/,"");const p=h.split("/").map(decodeURIComponent);
+ return {p,raw:h};
+}
+function headerHTML(rt){
+ const act=rt.p[0]==="chapter"?rt.p[1]:(rt.p[0]==="topic"&&parseTid(rt.p[1])?parseTid(rt.p[1]).ch.id:null);
+ return `<div class="hd1">
+  <button class="ib" id="menuBtn" aria-label="${esc(t("toggleSb"))}">${I("menu")}</button>
+  <a class="logo" href="#/" aria-label="JAWOO — ${esc(t("home"))}">JAWOO <small>慈雨</small></a>
+  <span class="sp"></span>
+  <a class="ib" id="searchBtn" href="#/search" aria-label="${esc(t("search"))}">${I("search")}<span class="sr">${esc(t("search"))}</span></a>
+  <div class="seg" role="group" aria-label="Language"><button data-lang="en" aria-pressed="${lang==="en"}">EN</button><button data-lang="ko" aria-pressed="${lang==="ko"}">KR</button></div>
+  <button class="ib" id="themeBtn" aria-label="${esc(t("theme"))}">${I(theme==="dark"?"sun":"moon")}</button>
+ </div>
+ <nav class="hd2" aria-label="${esc(t("chapters"))}">
+  <a href="#/" ${rt.p[0]===""||rt.raw===""?'aria-current="page"':""}>${esc(t("home"))}</a>
+  ${CH.map(c=>`<a href="#/chapter/${c.id}" ${act===c.id?'aria-current="page"':""}><b>${c.n}</b>${esc(lang==="ko"?c.ko:c.en)}</a>`).join("")}
+  <a href="#/ref/glossary" ${rt.p[0]==="ref"?'aria-current="page"':""}>${esc(t("ref"))}</a>
+ </nav>`;
+}
+function sidebarHTML(rt){
+ const activeTopic=rt.p[0]==="topic"?rt.p[1]:null;
+ const actCh=rt.p[0]==="chapter"?rt.p[1]:(activeTopic&&parseTid(activeTopic)?parseTid(activeTopic).ch.id:null);
+ if(actCh)openCh.add(actCh);
+ const refs=[["glossary","glossary"],["checklists","checklists"],["sources","sources"],["directory","directory"]];
+ return `<nav aria-label="${esc(t("chapters"))}">
+ <a class="top" href="#/" >${esc(t("home"))}</a>
+ <div class="lbl">${esc(t("chapters"))}</div>
+ ${CH.map(c=>{const o=openCh.has(c.id);return `<div>
+  <button class="chb ${actCh===c.id?"act":""}" data-ch="${c.id}" aria-expanded="${o}">${I("chev")}<span class="n">${c.n}</span><span>${esc(lang==="ko"?c.ko:c.en)}</span></button>
+  <ul ${o?"":"hidden"}>
+   <li><a class="t" href="#/chapter/${c.id}" ${rt.p[0]==="chapter"&&rt.p[1]===c.id?'aria-current="page"':""}>${esc(t("viewAll")==="x"?"":(lang==="ko"?"챕터 소개":"Chapter overview"))}</a></li>
+   ${c.topics.map((tp,i)=>{const id=tid(c.id,i);return `<li><a class="t" href="#/topic/${id}" ${activeTopic===id?'aria-current="page"':""}>${esc(lang==="ko"?tp[1]:tp[0])}</a></li>`}).join("")}
+  </ul></div>`}).join("")}
+ <div class="lbl">${esc(t("ref"))}</div>
+ ${refs.map(([k,l])=>`<a class="top" href="#/ref/${k}" ${rt.p[0]==="ref"&&rt.p[1]===k?'aria-current="page"':""}>${esc(t(l))}</a>`).join("")}
+ </nav>`;
+}
+
+/* ============================================================
+   Pages
+   ============================================================ */
+const disclaimer=()=>`<p class="dis">${esc(t("disc"))}</p>`;
+function crumb(parts){return `<nav class="crumb" aria-label="Breadcrumb">${parts.map((p,i)=>(i?'<span aria-hidden="true">/</span>':"")+(p[1]?`<a href="${p[1]}">${esc(p[0])}</a>`:`<span aria-current="page">${esc(p[0])}</span>`)).join("")}</nav>`}
+
+function homePage(){
+ const ex=[["Rental deposit recovery","임대 보증금 반환","deposit recovery"],["Part-time work regulations","아르바이트 규정","part-time"],["Student rights","학생의 권리","student rights"],["Workplace disputes","직장 분쟁","unpaid wages"],["Personal information protection","개인정보 보호","personal information"]];
+ return `<div class="home"><div class="mid">
+ <div class="brand"><div class="wm">JAWOO</div><div class="sym" aria-hidden="true">慈雨</div></div>
+ <h1>${esc(t("h1"))}</h1><p class="sub">${esc(t("sub"))}</p>
+ <form class="sbox" id="homeSearch" role="search" autocomplete="off"><span class="ic">${I("search")}</span>
+  <input id="hq" type="search" placeholder="${esc(t("searchPh"))}" aria-label="${esc(t("search"))}" aria-autocomplete="list" aria-controls="sug" autofocus>
+  <div class="sug" id="sug" role="listbox" hidden></div></form>
+ <div class="ex"><span>${esc(t("tryEx"))}</span>${ex.map(e=>`<a href="#/search/${encodeURIComponent(e[2])}">${esc(lang==="ko"?e[1]:e[0])}</a>`).join("")}</div>
+ <nav class="chs" aria-label="${esc(t("chapters"))}">${CH.map(c=>`<a href="#/chapter/${c.id}"><div class="cn">${c.n}</div><div class="ct">${esc(lang==="ko"?c.ko:c.en)}</div><div class="cs">${esc(tx(c.sub))}</div></a>`).join("")}</nav>
+ <div class="reflinks"><span class="lb">${esc(t("ref"))}</span><a href="#/ref/glossary">${esc(t("glossary"))}</a><a href="#/ref/checklists">${esc(t("checklists"))}</a><a href="#/ref/sources">${esc(t("sources"))}</a><a href="#/ref/directory">${esc(t("directory"))}</a></div>
+ </div><div class="hfoot">${esc(t("footHome"))}</div></div>`;
+}
+
+function chapterPage(id){
+ const c=chById(id);if(!c)return notFound();
+ const cl=CHECK.filter(x=>x.ch===id),gl=GLOSS.filter(x=>x.ch===id),dr=DIR.filter(x=>x.chs.includes(id));
+ return `<article class="pg" id="art">
+ ${crumb([[t("home"),"#/"],[c.n+" "+(lang==="ko"?c.ko:c.en)]])}
+ <div class="eyebrow">${c.n}</div><h1 class="ttl">${esc(lang==="ko"?c.ko:c.en)}</h1><p class="subt">${esc(tx(c.sub))}</p>
+ <p>${esc(tx(c.intro))}</p>
+ <div class="notice"><b>${esc(t("stUR"))}.</b> ${esc(lang==="ko"?"이 챕터의 주제는 작성·검증 단계에 있습니다. '검토 중' 표시가 있는 글은 최종 확정된 안내가 아닙니다.":"Topics in this chapter are being written and verified. Pages marked Under Review are not final, authoritative guidance.")}</div>
+ <h2 id="topics">${esc(t("topics"))}</h2>
+ <ul class="toplist">${c.topics.map((tp,i)=>{const tI=tid(id,i);const has=!!CONTENT[tI];return `<li><span class="no">${String(i+1).padStart(2,"0")}</span><a href="#/topic/${tI}">${esc(lang==="ko"?tp[1]:tp[0])}</a><span class="st ${has?"ok":""}">${esc(has?t("stUR"):t("stPlan"))}</span></li>`}).join("")}</ul>
+ ${cl.length?`<h2 id="chk">${esc(t("relChecklists"))}</h2><ul class="toplist">${cl.map(x=>`<li><a href="#/ref/checklists/${x.id}">${esc(tx(x.t))}</a></li>`).join("")}</ul>`:""}
+ ${gl.length?`<h2 id="gls">${esc(t("relGlossary"))}</h2><ul class="toplist">${gl.map(g=>`<li><a href="#/ref/glossary/${g.id}">${esc(lang==="ko"?g.ko:g.en)}</a><span class="st">${esc(lang==="ko"?g.en:g.ko)}</span></li>`).join("")}</ul>`:""}
+ ${dr.length?`<h2 id="agc">${esc(t("relAgencies"))}</h2>${dr.map(dirRow).join("")}`:""}
+ ${disclaimer()}</article>`;
+}
+function dirRow(d){return `<div class="row"><div class="a"><div class="nm">${esc(lang==="ko"?d.ko:d.en)}</div><div class="ds">${esc(tx(d.d))}</div></div><div class="r">${d.tel?`<a class="tel" href="tel:${d.tel}">${d.tel}</a>`:""}<a class="ext" href="${d.url}" target="_blank" rel="noopener">${esc(t("website"))}</a></div></div>`}
+
+function topicPage(id){
+ const P=parseTid(id);if(!P)return notFound();
+ const {ch,i,tp}=P,C=CONTENT[id];const title=lang==="ko"?tp[1]:tp[0];
+ const crumbs=crumb([[t("home"),"#/"],[ch.n+" "+(lang==="ko"?ch.ko:ch.en),"#/chapter/"+ch.id],[title]]);
+ if(!C){
+  return `<article class="pg" id="art">${crumbs}<div class="eyebrow">${ch.n} · ${esc(lang==="ko"?ch.ko:ch.en)}</div><h1 class="ttl">${esc(title)}</h1><p class="subt">${esc(lang==="ko"?tp[0]:tp[1])}</p>
+  <div class="tags"><span class="tag red">${esc(t("stPlan"))}</span></div>
+  <div class="notice"><b>${esc(t("planBanner"))}.</b> ${esc(t("planned"))}</div>
+  <div class="meta"><span><b>${esc(t("tid"))}</b> ${id}</span><span><b>${esc(t("status"))}</b> Draft</span><span><b>${esc(t("trans"))}</b> ${esc(t("trNone"))}</span></div>
+  <h2 id="siblings">${esc(t("related"))}</h2><ul class="toplist">${ch.topics.map((x,j)=>j===i?"":`<li><span class="no">${String(j+1).padStart(2,"0")}</span><a href="#/topic/${tid(ch.id,j)}">${esc(lang==="ko"?x[1]:x[0])}</a><span class="st ${CONTENT[tid(ch.id,j)]?"ok":""}">${esc(CONTENT[tid(ch.id,j)]?t("stUR"):t("stPlan"))}</span></li>`).join("")}</ul>
+  ${disclaimer()}</article>`;
+ }
+ const secs=[];const S=(sid,key,body)=>{secs.push([sid,t(key)]);return `<h2 id="${sid}">${esc(t(key))}</h2>${body}`};
+ const lawsBody=(C.laws||[]).map(x=>`<div class="law"><div class="nm"><a class="ext" href="${lawUrl(LAWS[x.k].ko)}" target="_blank" rel="noopener">${esc(lang==="ko"?LAWS[x.k].ko:LAWS[x.k].en)}</a></div><div class="ar">${lang==="ko"?"":esc(LAWS[x.k].ko)+" · "}<b>${esc(tx(x.arts))}</b></div>${x.note?`<div class="ar">${esc(tx(x.note))}</div>`:""}</div>`).join("");
+ let html=`<article class="pg" id="art">${crumbs}
+ <div class="eyebrow">${ch.n} · ${esc(lang==="ko"?ch.ko:ch.en)}</div><h1 class="ttl">${esc(title)}</h1><p class="subt">${esc(tx(C.sub))}</p>
+ <div class="tags"><span class="tag blue">${esc(lang==="ko"?ch.ko:ch.en)}</span>${C.labels.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}<span class="tag red">${esc(t("stUR"))}</span></div>
+ <div class="notice"><b>${esc(t("stUR"))}.</b> ${esc(lang==="ko"?"이 글은 검토 중인 초안으로, 확정된 권위 있는 안내가 아닙니다. 아래 '게시 전 확인이 필요한 사항'을 반드시 확인하세요.":"This page is a draft under review and is not final, authoritative guidance. See “Needs verification before publication” below.")}</div>
+ <div class="meta"><span><b>${esc(t("tid"))}</b> ${id}</span><span><b>${esc(t("lastRev"))}</b> ${esc(t("notRev"))}</span><span><b>${esc(t("drafted"))}</b> ${DRAFT_DATE}</span><span><b>${esc(t("trans"))}</b> ${esc(t("trAI"))}</span></div>`;
+ html+=S("overview","overview",paras(C.overview));
+ html+=S("applies","applies",bodyHTML(C.applies)+`<p class="flag"><b>${esc(t("applicable"))}:</b> ${esc(tx(C.groups))}</p>`);
+ if(C.laws)html+=S("law","law",lawsBody);
+ if(C.understand)html+=S("understand","understand",paras(C.understand));
+ if(C.scenario)html+=S("scenario","scenario",`<div class="scn"><div class="lab">${esc(t("scnLabel"))}</div><p>${esc(tx(C.scenario))}</p></div>`);
+ if(C.actions)html+=S("actions","actions",C.actions&&Array.isArray(tx(C.actions))&&id!=="help-4"?olist(C.actions):bodyHTML(C.actions));
+ if(C.exceptions)html+=S("exceptions","exceptions",bodyHTML(C.exceptions));
+ if(C.help){const list=C.help.map(k=>DIR.find(d=>d.id===k)).filter(Boolean);html+=S("help","help",list.map(dirRow).join("")+`<p class="flag">${esc(t("langSupport"))}: ${esc(t("unverified"))}</p>`)}
+ html+=S("sources","official",`<ul class="b">${C.sources.map(s=>`<li><a class="ext" href="${s.u}" target="_blank" rel="noopener">${esc(tx(s.t))}</a></li>`).join("")}</ul>`);
+ secs.push(["verify",t("verify")]);
+ html+=`<h2 id="verify">${esc(t("verify"))}</h2><ul class="b flag">${tx(C.flags).map(f=>`<li>${esc(f)}</li>`).join("")}</ul>`;
+ secs.push(["related",t("related")]);
+ html+=`<h2 id="related">${esc(t("related"))}</h2><ul class="toplist">${C.related.map(r=>{const q=parseTid(r);return q?`<li><a href="#/topic/${r}">${esc(lang==="ko"?q.tp[1]:q.tp[0])}</a><span class="st ${CONTENT[r]?"ok":""}">${esc(CONTENT[r]?t("stUR"):t("stPlan"))}</span></li>`:""}).join("")}${C.checklist?`<li><a href="#/ref/checklists/${C.checklist}">${esc(tx(CHECK.find(x=>x.id===C.checklist).t))} — ${esc(t("checklists"))}</a></li>`:""}</ul>
+ <div class="foot-actions"><button class="link" id="corrBtn">${esc(t("ctaCorr"))}</button></div><div id="corrNote" class="notice blue" hidden>${esc(t("reportNote"))}</div>
+ ${disclaimer()}</article>`;
+ window.__secs=secs;
+ return html;
+}
+
+function checklistsPage(focus){
+ const st=loadCl();
+ const cats=Object.keys(CCATS);
+ return `<article class="pg" id="art">${crumb([[t("home"),"#/"],[t("ref"),"#/ref/glossary"],[t("checklists")]])}
+ <h1 class="ttl">${esc(t("checklists"))}</h1><p class="subt">${esc(lang==="ko"?"단계별로 확인하고 체크하세요. 체크 상태는 이 기기의 브라우저에 저장됩니다(가능한 경우).":"Work through each list step by step. Your progress is saved in this browser when possible.")}</p>
+ ${cats.map(c=>{const ls=CHECK.filter(x=>x.cat===c);return ls.length?`<h2 id="cat-${c}">${esc(tx(CCATS[c]))}</h2>${ls.map(x=>{const items=tx(x.items),done=items.filter((_,i)=>st[x.id+":"+i]).length;return `<section class="cl" id="${x.id}"><h3>${esc(tx(x.t))}</h3><div class="prog" aria-hidden="true"><i style="width:${Math.round(done/items.length*100)}%"></i></div><div class="flag" data-prog="${x.id}">${done} / ${items.length} ${esc(t("done"))}</div>${items.map((it,i)=>`<div class="ck"><input type="checkbox" id="${x.id}-${i}" data-cl="${x.id}:${i}" ${st[x.id+":"+i]?"checked":""}><label for="${x.id}-${i}">${esc(it)}</label></div>`).join("")}<p><button class="link" data-reset="${x.id}">${esc(t("reset"))}</button></p></section>`}).join("")}`:""}).join("")}
+ ${disclaimer()}</article>`;
+}
+function loadCl(){const r=store.get("jawoo-cl");try{return r?JSON.parse(r):memCl}catch(e){return memCl}}
+function saveCl(o){memCl=o;store.set("jawoo-cl",JSON.stringify(o))}
+
+function glossaryPage(focus){
+ const all=GLOSS.slice().sort((a,b)=>(lang==="ko"?a.ko.localeCompare(b.ko,"ko"):a.en.localeCompare(b.en)));
+ const letters=[...new Set(all.map(g=>firstChar(g)))];
+ return `<article class="pg" id="art">${crumb([[t("home"),"#/"],[t("ref"),"#/ref/glossary"],[t("glossary")]])}
+ <h1 class="ttl">${esc(t("glossary"))}</h1><p class="subt">${esc(lang==="ko"?"쉬운 말로 풀어 쓴 한·영 법률 용어. 번역은 전문 감수 전입니다.":"Plain-language terms in English and Korean. Translations are not yet professionally verified.")}</p>
+ <input class="inp" id="glq" type="search" placeholder="${esc(t("findTerm"))}" aria-label="${esc(t("findTerm"))}">
+ <div class="filters" id="glc"><button class="chip" data-c="" aria-pressed="true">${esc(t("all"))}</button>${Object.keys(GCATS).map(c=>`<button class="chip" data-c="${c}" aria-pressed="false">${esc(tx(GCATS[c]))}</button>`).join("")}</div>
+ <div class="az" id="glaz" aria-label="${esc(t("az"))}"><button data-l="" aria-pressed="true">${esc(t("all"))}</button>${letters.map(l=>`<button data-l="${l}" aria-pressed="false">${l}</button>`).join("")}</div>
+ <div id="gllist"></div>${disclaimer()}</article>`;
+}
+const firstChar=g=>{const s=(lang==="ko"?g.ko:g.en).trim();const c=s.charAt(0).toUpperCase();if(lang==="ko"){const code=s.charCodeAt(0)-0xAC00;if(code>=0&&code<11172){return "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ"[Math.floor(code/588)]}}return c};
+function glossList(){
+ const q=($("#glq")?.value||"").toLowerCase().trim();const cat=$("#glc .chip[aria-pressed=true]")?.dataset.c||"";const l=$("#glaz button[aria-pressed=true]")?.dataset.l||"";
+ const items=GLOSS.filter(g=>(!cat||g.cat===cat)&&(!l||firstChar(g)===l)&&(!q||(g.en+g.ko+g.d.en+g.d.ko).toLowerCase().includes(q))).sort((a,b)=>(lang==="ko"?a.ko.localeCompare(b.ko,"ko"):a.en.localeCompare(b.en)));
+ $("#gllist").innerHTML=items.length?items.map(g=>`<div class="gl" id="${g.id}"><span class="term">${esc(g.en)}</span><span class="kr">${esc(g.ko)}</span><p>${esc(tx(g.d))}</p><a href="#/topic/${g.t}">${esc(t("glossSee"))} →</a> <span class="tag">${esc(tx(GCATS[g.cat]))}</span></div>`).join(""):`<p class="empty">${esc(t("noMatch"))}</p>`;
+}
+
+function sourcesPage(){
+ const grp=(title,arr)=>`<h2 id="${title.replace(/\W/g,"")}">${esc(title)}</h2>${arr.map(s=>`<div class="row"><div class="a"><a class="ext nm" href="${s.u}" target="_blank" rel="noopener">${esc(lang==="ko"?s.ko:s.en)}</a><div class="ds">${esc(lang==="ko"?s.en:s.ko)}</div></div></div>`).join("")}`;
+ return `<article class="pg" id="art">${crumb([[t("home"),"#/"],[t("ref"),"#/ref/glossary"],[t("sources")]])}
+ <h1 class="ttl">${esc(t("sources"))}</h1><p class="subt">${esc(lang==="ko"?"법령은 국가법령정보센터의 공식 본문으로 연결됩니다. 링크는 게시 전에 모두 다시 확인해야 합니다.":"Laws link to the official text at the Korean National Law Information Center. All links must be re-checked before publication.")}</p>
+ ${grp(t("statutes"),SRC_STATUTES)}${grp(t("agencies"),SRC_AGENCIES)}${grp(t("english"),SRC_OTHER)}${disclaimer()}</article>`;
+}
+function directoryPage(){
+ return `<article class="pg" id="art">${crumb([[t("home"),"#/"],[t("ref"),"#/ref/glossary"],[t("directory")]])}
+ <h1 class="ttl">${esc(t("directory"))}</h1><p class="subt">${esc(lang==="ko"?"공공 기관 중심의 목록입니다. 전화번호와 언어 지원은 게시 전에 각각 확인해야 합니다.":"A list centred on public agencies. Phone numbers and language support must each be verified before publication.")}</p>
+ <input class="inp" id="dq" type="search" placeholder="${esc(t("findOrg"))}" aria-label="${esc(t("findOrg"))}">
+ <div class="filters" id="dc"><button class="chip" data-c="" aria-pressed="true">${esc(t("all"))}</button>${DCATS.map(c=>`<button class="chip" data-c="${c}" aria-pressed="false">${esc(tx(DCL[c]))}</button>`).join("")}</div>
+ <div id="dlist"></div>${disclaimer()}</article>`;
+}
+function dirList(){
+ const q=($("#dq")?.value||"").toLowerCase().trim();const c=$("#dc .chip[aria-pressed=true]")?.dataset.c||"";
+ const items=DIR.filter(d=>(!c||d.cats.includes(c))&&(!q||(d.en+d.ko+d.d.en+d.d.ko+(d.tel||"")).toLowerCase().includes(q)));
+ $("#dlist").innerHTML=items.length?items.map(d=>`<div class="row" id="${d.id}"><div class="a"><div class="nm">${esc(lang==="ko"?d.ko:d.en)}</div><div class="ds">${esc(tx(d.d))}</div><div class="ds">${esc(t("issues"))}: ${d.cats.map(x=>esc(DCL[x]?tx(DCL[x]):x)).join(", ")} · ${esc(t("langSupport"))}: ${esc(t("unverified"))}</div></div><div class="r">${d.tel?`<a class="tel" href="tel:${d.tel}">${d.tel}</a>`:""}<a class="ext" href="${d.url}" target="_blank" rel="noopener">${esc(t("website"))}</a></div></div>`).join(""):`<p class="empty">${esc(t("noMatch"))}</p>`;
+}
+
+function searchPage(q){
+ return `<article class="pg" id="art">${crumb([[t("home"),"#/"],[t("search")]])}
+ <h1 class="ttl">${esc(t("search"))}</h1>
+ <form id="sform" role="search"><input class="inp" id="sq" type="search" style="height:48px;font-size:16px" value="${esc(q)}" placeholder="${esc(t("searchPh"))}" aria-label="${esc(t("search"))}"></form>
+ <p class="flag" style="margin-top:8px">${esc(t("searchNote"))}</p>
+ <div id="sres" aria-live="polite">${resultsHTML(q)}</div>${disclaimer()}</article>`;
+}
+function notFound(){return `<article class="pg" id="art"><h1 class="ttl">${esc(t("notFound"))}</h1><p>${esc(t("notFoundTxt"))}</p><p><a href="#/">${esc(t("goHome"))}</a></p></article>`}
+
+/* ============================================================
+   Render & router
+   ============================================================ */
+function render(){
+ const rt=currentRoute();const p=rt.p;
+ const isHome=!p[0]||p[0]==="";
+ document.body.classList.toggle("is-home",isHome);
+ document.documentElement.lang=lang;
+ $("#skipLink").textContent=lang==="ko"?"본문으로 건너뛰기":"Skip to content";
+ $("#hd").innerHTML=headerHTML(rt);
+ $("#sb").innerHTML=sidebarHTML(rt);
+ let html="",title="JAWOO 慈雨",showToc=false;window.__secs=null;
+ try{
+  if(isHome){html=homePage()}
+  else if(p[0]==="chapter"){html=chapterPage(p[1]);const c=chById(p[1]);if(c)title=(lang==="ko"?c.ko:c.en)+" — JAWOO";window.__secs=[["topics",t("topics")],["chk",t("relChecklists")],["gls",t("relGlossary")],["agc",t("relAgencies")]].filter(s=>html.includes('id="'+s[0]+'"'));showToc=true}
+  else if(p[0]==="topic"){html=topicPage(p[1]);const P=parseTid(p[1]);if(P)title=(lang==="ko"?P.tp[1]:P.tp[0])+" — JAWOO";showToc=!!window.__secs}
+  else if(p[0]==="search"){html=searchPage(p[1]||"")}
+  else if(p[0]==="ref"){const k=p[1]||"glossary";html=k==="checklists"?checklistsPage():k==="sources"?sourcesPage():k==="directory"?directoryPage():glossaryPage();title=t(k==="checklists"?"checklists":k==="sources"?"sources":k==="directory"?"directory":"glossary")+" — JAWOO"}
+  else html=notFound();
+ }catch(err){console.error(err);html=`<article class="pg"><h1 class="ttl">Error</h1><p>${esc(String(err))}</p><p><a href="#/">${esc(t("goHome"))}</a></p></article>`}
+ const secs=window.__secs;
+ const tocm=(showToc&&secs)?`<details class="tocm"><summary>${esc(t("onPage"))}</summary>${secs.map(s=>`<a href="#" data-jump="${s[0]}">${esc(s[1])}</a>`).join("")}</details>`:"";
+ $("#main").innerHTML=(isHome?html:tocm+html+`<div class="foot">${esc(t("disc"))}</div>`);
+ document.title=title;
+ $("#toc").innerHTML=(showToc&&secs)?`<h4><span>${esc(t("onPage"))}</span><button class="link" id="tocBtn" aria-label="${esc(t("onPage"))}" aria-expanded="true">–</button></h4><ul>${secs.map(s=>`<li><a href="#" data-jump="${s[0]}">${esc(s[1])}</a></li>`).join("")}</ul>`:"";
+ afterRender(rt);
+}
+function afterRender(rt){
+ const p=rt.p;
+ document.body.classList.remove("sb-open");
+ if(p[0]==="ref"){
+  if(p[1]==="glossary"||!p[1]){glossList();if(p[2]){const el=document.getElementById(p[2]);if(el){el.scrollIntoView();el.style.background="var(--blue-soft)"}}}
+  if(p[1]==="directory"){dirList();if(p[2]){const el=document.getElementById(p[2]);if(el){el.scrollIntoView();el.style.background="var(--blue-soft)"}}}
+  if(p[1]==="checklists"&&p[2]){const el=document.getElementById(p[2]);if(el)el.scrollIntoView()}
+ }else if(p[0]==="search"){const i=$("#sq");if(i&&!i.value)i.focus()}
+ else window.scrollTo(0,0);
+ /* scroll spy */
+ const hs=$$("#art h2[id]");
+ if(hs.length&&"IntersectionObserver"in window&&$("#toc a")){
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){$$("#toc a").forEach(a=>a.classList.toggle("on",a.dataset.jump===e.target.id))}})},{rootMargin:"-110px 0px -70% 0px"});
+  hs.forEach(h=>io.observe(h));
+ }
+ if(p[0]==="topic"||p[0]==="chapter"){const ti=$("#art .ttl");}
+ bindHome();
+}
+function bindHome(){
+ const f=$("#homeSearch");if(!f)return;
+ const inp=$("#hq"),sug=$("#sug");let sel=-1,cur=[];
+ const upd=()=>{
+  const q=inp.value.trim();
+  if(!q){sug.hidden=true;return}
+  cur=search(q).slice(0,6);sel=-1;
+  sug.innerHTML=cur.length?cur.map(({e},i)=>`<a href="${e.path}" role="option" data-i="${i}"><span class="ty">${esc(t(TYPELABEL[e.type]))}</span><span>${esc(entTitle(e))}</span><small>${esc(entPath(e))}</small></a>`).join(""):`<a href="#/search/${encodeURIComponent(q)}"><span class="ty">${esc(t("search"))}</span><span>${esc(q)}</span></a>`;
+  sug.hidden=false;
+ };
+ inp.addEventListener("input",upd);
+ inp.addEventListener("keydown",e=>{
+  const as=$$("a",sug);
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();if(!as.length)return;sel=(sel+(e.key==="ArrowDown"?1:-1)+as.length)%as.length;as.forEach((a,i)=>a.classList.toggle("sel",i===sel))}
+  else if(e.key==="Enter"&&sel>=0){e.preventDefault();location.hash=as[sel].getAttribute("href")}
+  else if(e.key==="Escape"){sug.hidden=true}
+ });
+ f.addEventListener("submit",e=>{e.preventDefault();const q=inp.value.trim();if(q)location.hash="#/search/"+encodeURIComponent(q)});
+ document.addEventListener("click",e=>{if(!f.contains(e.target))sug.hidden=true},{once:false});
+}
+
+/* ---------- Global events ---------- */
+document.addEventListener("click",e=>{
+ const tg=e.target;
+ const lb=tg.closest("[data-lang]");if(lb){lang=lb.dataset.lang;store.set("jawoo-lang",lang);render();return}
+ if(tg.closest("#themeBtn")){theme=theme==="dark"?"light":"dark";store.set("jawoo-theme",theme);applyTheme();$("#themeBtn").innerHTML=I(theme==="dark"?"sun":"moon");return}
+ if(tg.closest("#menuBtn")){if(matchMedia("(max-width:860px)").matches)document.body.classList.toggle("sb-open");else document.body.classList.toggle("sb-collapsed");return}
+ if(tg.closest("#scrim")){document.body.classList.remove("sb-open");return}
+ const cb=tg.closest("[data-ch]");if(cb){const id=cb.dataset.ch;openCh.has(id)?openCh.delete(id):openCh.add(id);const o=openCh.has(id);cb.setAttribute("aria-expanded",o);const ul=cb.nextElementSibling;if(ul)ul.hidden=!o;return}
+ const j=tg.closest("[data-jump]");if(j){e.preventDefault();const el=document.getElementById(j.dataset.jump);if(el){el.scrollIntoView({behavior:"smooth"});$$("#toc a").forEach(a=>a.classList.toggle("on",a===j))}const d=j.closest("details");if(d)d.open=false;return}
+ if(tg.closest("#tocBtn")){const w=$("#toc");w.classList.toggle("shut");const b=$("#tocBtn");const s=w.classList.contains("shut");b.textContent=s?"+":"–";b.setAttribute("aria-expanded",!s);return}
+ if(tg.closest("#corrBtn")){const n=$("#corrNote");if(CONTACT_EMAIL){location.href="mailto:"+CONTACT_EMAIL+"?subject="+encodeURIComponent("JAWOO correction: "+document.title)}else n.hidden=!n.hidden;return}
+ if(tg.closest("#glc .chip")){$$("#glc .chip").forEach(c=>c.setAttribute("aria-pressed",c===tg.closest(".chip")));glossList();return}
+ if(tg.closest("#glaz button")){$$("#glaz button").forEach(c=>c.setAttribute("aria-pressed",c===tg.closest("button")));glossList();return}
+ if(tg.closest("#dc .chip")){$$("#dc .chip").forEach(c=>c.setAttribute("aria-pressed",c===tg.closest(".chip")));dirList();return}
+ const rs=tg.closest("[data-reset]");if(rs){const id=rs.dataset.reset;const st=loadCl();Object.keys(st).forEach(k=>{if(k.startsWith(id+":"))delete st[k]});saveCl(st);render();return}
+ const a=tg.closest("a[href^='#/']");if(a&&a.getAttribute("href")===location.hash)render();
+});
+document.addEventListener("change",e=>{
+ const c=e.target.closest("[data-cl]");if(!c)return;
+ const st=loadCl();st[c.dataset.cl]=c.checked;saveCl(st);
+ const id=c.dataset.cl.split(":")[0];const L2=CHECK.find(x=>x.id===id);const n=tx(L2.items).length;const d=tx(L2.items).filter((_,i)=>loadCl()[id+":"+i]).length;
+ const sec=document.getElementById(id);$(".prog i",sec).style.width=Math.round(d/n*100)+"%";$("[data-prog]",sec).textContent=d+" / "+n+" "+t("done");
+});
+document.addEventListener("input",e=>{
+ if(e.target.id==="glq")glossList();
+ if(e.target.id==="dq")dirList();
+ if(e.target.id==="sq"){const q=e.target.value;$("#sres").innerHTML=resultsHTML(q);history.replaceState(null,"","#/search/"+encodeURIComponent(q))}
+});
+document.addEventListener("submit",e=>{if(e.target.id==="sform")e.preventDefault()});
+document.addEventListener("keydown",e=>{
+ if((e.key==="/"||(e.key==="k"&&(e.ctrlKey||e.metaKey)))&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();const h=$("#hq");if(h)h.focus();else location.hash="#/search"}
+ if(e.key==="Escape")document.body.classList.remove("sb-open");
+});
+function applyTheme(){document.documentElement.setAttribute("data-theme",theme)}
+addEventListener("hashchange",render);
+matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change",e=>{if(!store.get("jawoo-theme")){theme=e.matches?"dark":"light";applyTheme();render()}});
+applyTheme();buildIndex();
+if(matchMedia("(max-width:860px)").matches===false){/* desktop: sidebar visible by default */}
+/* mount scrim inside body root */
+render();
+</script>
+</body>
+</html>
